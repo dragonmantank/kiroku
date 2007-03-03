@@ -1,0 +1,44 @@
+.BA_evenRow
+{}
+
+.BA_ovenRow
+{}
+
+/* Show only to IE PC \*/
+* html .BA_systemErrorHead h2 {height: 1%;} /* For IE 5 PC */
+
+.BA_systemError 
+{
+	margin: 0 auto; /* center for now */
+	width: 49%; /* ems so it will grow */
+	background: url({BA_API_IMAGES_URL}systemError/sbbody-r.gif) no-repeat bottom right;
+	font-size: 100%;
+}
+.BA_systemErrorHead 
+{
+	background: url({BA_API_IMAGES_URL}systemError/sbhead-r.gif) no-repeat top right;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+.BA_systemErrorHead h2 
+{
+	background: url({BA_API_IMAGES_URL}systemError/sbhead-l.gif) no-repeat top left;
+	margin: 0;
+	padding: 22px 30px 5px;
+	color: white; 
+	font-weight: bold; 
+	font-size: 1.2em; 
+	line-height: 1em;
+	text-shadow: rgba(0,0,0,.4) 0px 2px 5px; /* Safari-only, but cool */
+	font-family:	Arial;
+}
+.BA_systemErrorBody 
+{
+	background: url({BA_API_IMAGES_URL}systemError/sbbody-l.gif) no-repeat bottom left;
+	margin: 0;
+	padding: 5px 30px 31px;
+	font-family:	Arial;
+	font-size:		10pt;
+	text-align:		left;
+}
