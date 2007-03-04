@@ -1,4 +1,25 @@
 <?php
+/******************************************************************************
+ * Filename:		securityCenter-SMF.class.phpp
+ * Description:		Allows user authentication via the SMF bboard system
+ * Creation Date:	Uknown (Before 02/24/2007 updates)
+ * Original Author:	Chris Tankersley (dragonmantank@gmail.com)
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BCMS Modifications:
+ * =====================
+ * CRT = Chris Tankersley
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 02/24/2007	CRT		Removed some old commented-out code from ProcessLogin
+ * 02/24/2007	CRT		Changed to use the CMS_GROUP_SUPER_USER global
+ *****************************************************************************/
 
 class securityCenter extends apiObject
 {
@@ -30,7 +51,7 @@ class securityCenter extends apiObject
 				foreach($_SESSION['user_groups'] as $group)
 				{
 					// Do the actual search and pass or fail (CMS Super Users will pass)
-					if( (array_search($group, $allowed_groups)) || ($group == $this->FindGroupID("CMS Super Users")) )
+					if( (array_search($group, $allowed_groups)) || ($group == $this->FindGroupID(CMS_GROUP_SUPER_USER)) )
 					{
 						// We found a matching group, so allow us to log in and break to stop further checking
 						$bool = true;
@@ -45,7 +66,7 @@ class securityCenter extends apiObject
 			else
 			{
 				// Do the actual search and pass or fail (CMS Super Users will pass)
-				if( (array_search($_SESSION['user_groups'], $allowed_groups)) || ($_SESSION['user_groups'] == $this->FindGroupID("CMS Super Users")) )
+				if( (array_search($_SESSION['user_groups'], $allowed_groups)) || ($_SESSION['user_groups'] == $this->FindGroupID(CMS_GROUP_SUPER_USER)) )
 				{
 					$bool = true;
 				}
@@ -64,7 +85,7 @@ class securityCenter extends apiObject
 				
 				if(is_array($_SESSION['user_groups']))
 				{
-					if( (in_array($allowed_groups, $_SESSION['user_groups'])) || (in_array($this->FindGroupID("CMS Super Users"), $_SESSION['user_groups'])) )
+					if( (in_array($allowed_groups, $_SESSION['user_groups'])) || (in_array($this->FindGroupID(CMS_GROUP_SUPER_USER), $_SESSION['user_groups'])) )
 					{
 						$bool = true;
 					}
@@ -75,7 +96,7 @@ class securityCenter extends apiObject
 				}
 				else
 				{
-					if( ($_SESSION['user_group'] == $allowed_groups) || ($_SESSION['user_group'] == $this->FindGroupID("CMS Super Users")) )
+					if( ($_SESSION['user_group'] == $allowed_groups) || ($_SESSION['user_group'] == $this->FindGroupID(CMS_GROUP_SUPER_USER)) )
 					{
 						$bool = true;
 					}
@@ -185,14 +206,31 @@ class securityCenter extends apiObject
 		header("Location: ".$this->settings['BA_URL_PATH']."login.php?ref=$ref_page");
 	}
 	
-	// ===================================================================
-	// Function: 	ProcessLogin
-	// Description:	Validate a login and, if good, set the session variables
-	// ===================================================================
+	// ========================================================================
+	// Function:	ProcessLogin
+	// 
+	// Purpose:		Checks to see if a valid username and password were supplied
+	// 
+	// Parameters:	string $username
+	// 				string $password
+	// 
+	// Returns:		On incorrect username/password:	str
+	//				On correct username/password:	(nothing)
+	// Created:		CRT - 2/24/2007
+	// 
+	// Modifications:
+	// ==============
+	// CRT = Chris Tankersley
+	//
+	// MM/DD/YYYY	PGRMR	DESCRIPTION OF CHANGES
+	// ----------	-----	----------------------
+	// 02/24/2007	CRT		Removed some old commented out code
+	// ========================================================================
 	function ProcessLogin($username, $password)
 	{
 		
 		// Hash the login
+		// Uncomment the below line if you are using MD5 hashing instead of sha1 (older SMF)
 		//$md5ed_password = $this->md5_hmac($password, strtolower($username));
 		$md5ed_password = $this->sha_pass($password, strtolower($username));
 	
@@ -207,24 +245,21 @@ class securityCenter extends apiObject
 
 			$groups = explode(",", $data['additionalGroups']);
 			$groups[] = $data['ID_GROUP'];
-			
-//			if( in_array(, $groups) )
-//			{
-				// Get the data and set it into the session
-				$_SESSION['user_id']		= $data['ID_MEMBER'];
-				$_SESSION['user_groups']	= $groups;	
-				$_SESSION['username']  		= $username;
+
+			// Get the data and set it into the session
+			$_SESSION['user_id']		= $data['ID_MEMBER'];
+			$_SESSION['user_groups']	= $groups;	
+			$_SESSION['username']  		= $username;
 				
-				// Send it to the ref page if passed, or to the homepage
-				if(trim($_GET['ref']) != "")
-				{
-					header("Location: ".$_GET['ref']);
-				}
-				else
-				{
-					header("Location: admin.php");
-				}
-//			}
+			// Send it to the ref page if passed, or to the homepage
+			if(trim($_GET['ref']) != "")
+			{
+				header("Location: ".$_GET['ref']);
+			}
+			else
+			{
+				header("Location: admin.php");
+			}
 		}
 		elseif($sql->num_rows($result) == 0)
 		{
@@ -258,19 +293,24 @@ class securityCenter extends apiObject
 		return md5(($key ^ str_repeat(chr(0x5c), 64)) . pack('H*', md5(($key ^ str_repeat(chr(0x36), 64)). $data)));
 	}
 
-	/**********************************************************************
-	Function:	sha_pass
-	
-	Purpose:	Generates an sha1 hashed string for use with SMF's new
-			password algorithm
-
-	Parameters:	string $data	password user types in
-			string $key	username user types in
-				
-	Returns:	str
-			
-	Created:	CRT - 2/24/2007
-	**********************************************************************/
+	// ========================================================================
+	// Function:	sha_pass
+	// 
+	// Purpose:		Generates an sha1 hashed string for use with SMF's new
+	// 				password algorithm
+	// 
+	// Parameters:	string $data	password user types in
+	// 				string $key	username user types in
+	// 
+	// Returns:		str
+	// 
+	// Created:		CRT - 2/24/2007
+	// 
+	// Modifications:
+	// ==============
+	// MM/DD/YYYY	PGRMR	DESCRIPTION OF CHANGES
+	// ----------	-----	----------------------
+	// ========================================================================
 	function sha_pass( $data, $key )
 	{
 		return sha1( strtolower( $key ) . stripslashes( $data ) );
