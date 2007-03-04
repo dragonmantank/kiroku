@@ -1,7 +1,29 @@
 <?php
+/******************************************************************************
+ * Filename:		domain_admin.php
+ * Description:		Domain admin section. Controls the domain settings on multi-
+ * 					domain installations. Also allows the same modifications that
+ * 					site_information.php controls, but across multiple domains.
+ * Creation Date:	Unknown (before the 03/03/2007 modifications)
+ * Original Author:	Chris Tankersley (dragonmantank@gmail.com)
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BCMS Modifications:
+ * =====================
+ * CRT = Chris Tankersley
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 03/03/2007	CRT		Converted to use the new global vars for user groups
+ *****************************************************************************/
 
 $sc = new securityCenter();
-$sc->CheckCredentials("Domain Admin", "admin.php", true);
+$sc->CheckCredentials(CMS_GROUP_DOMAIN_ADMIN, "admin.php", true);
 
 function afMain()
 {

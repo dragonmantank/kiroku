@@ -1,9 +1,29 @@
 <?php
+/******************************************************************************
+ * Filename:		admin.php
+ * Description:		Calls the appropriate admin section of the website.
+ * Creation Date:	Unknown (before the 03/03/2007 modifications)
+ * Original Author:	Chris Tankersley (dragonmantank@gmail.com)
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BSB Modifications:
+ * =====================
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 03/03/2007	CRT		Converted to use the new global vars for user groups
+ *****************************************************************************/
+ 
 session_start();
 require_once 'includes/bsb.header.php';
 
 $sc = new securityCenter();
-$sc->CheckCredentials("Administrators", "admin.php", true);
+$sc->CheckCredentials(CMS_GROUP_ADMINISTRATOR, "admin.php", true);
 
 $programObject = new programObject;
 

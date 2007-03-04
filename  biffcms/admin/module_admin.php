@@ -1,7 +1,29 @@
 <?php
+/******************************************************************************
+ * Filename:		module_admin.php
+ * Description:		Module admin section. Allows modules to be installed, deleted,
+ * 					and modified.
+ * Creation Date:	Unknown (before the 03/03/2007 modifications)
+ * Original Author:	Chris Tankersley (dragonmantank@gmail.com)
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BCMS Modifications:
+ * =====================
+ * CRT = Chris Tankersley
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 03/03/2007	CRT		Converted to use the new global vars for user groups
+ *****************************************************************************/
+ 
 session_start();
 $sc = new securityCenter();
-$sc->CheckCredentials("Module Admin", "admin.php", true);
+$sc->CheckCredentials(CMS_GROUP_MODULE_ADMIN, "admin.php", true);
 
 function afMain()
 {

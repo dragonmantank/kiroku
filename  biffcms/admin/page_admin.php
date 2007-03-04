@@ -1,7 +1,28 @@
 <?php
-
+/******************************************************************************
+ * Filename:		page_admin.php
+ * Description:		Page admin section. Controls creation, deletion, and calling
+ * 					of the appropriate module admin sections for each page.
+ * Creation Date:	Unknown (before the 03/03/2007 modifications)
+ * Original Author:	Chris Tankersley (dragonmantank@gmail.com)
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BCMS Modifications:
+ * =====================
+ * CRT = Chris Tankersley
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 03/03/2007	CRT		Converted to use the new global vars for user groups
+ *****************************************************************************/
+ 
 $sc = new securityCenter();
-$sc->CheckCredentials("Page Admin", "admin.php", true);
+$sc->CheckCredentials(CMS_GROUP_PAGE_ADMIN, "admin.php", true);
 
 function afMain()
 {
