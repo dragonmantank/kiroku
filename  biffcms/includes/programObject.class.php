@@ -1,5 +1,27 @@
 <?php
 
+/******************************************************************************
+ * Filename:		programObject.class.php
+ * Description:		Default class for all objects used in the CMS. This class
+ 					contains a lot of members that many objects use
+ * Creation Date:	Unknown (Before 02/28/2007 update)
+ * Original Author:	Chris Tankersley
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BCMS Modifications:
+ * =====================
+ * CRT = Chris Tankersley
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 02/28/2007	CRT		Added 'Domain Admin' link to the admin sub menu 
+ *****************************************************************************/
+
 class programObject extends apiObject
 {
 	function programObject()
@@ -289,11 +311,31 @@ class programObject extends apiObject
 	}
 	
 
+	// ========================================================================
+	// Function:	generateAdminMenu
+	// 
+	// Purpose:		Creates the admin sub menu in the admin section
+	// 
+	// Parameters:	(None)
+	// 
+	// Returns:		str $html
+	// 
+	// Created:		Unknown (Before 02/28/2007 update)
+	// 
+	// Modifications:
+	// ==============
+	// CRT = Chris Tankersley
+	// 
+	// MM/DD/YYYY	PGRMR	DESCRIPTION OF CHANGES
+	// ----------	-----	----------------------
+	// 02/28/2007	CRT		Added 'Domain Admin' link
+	// ========================================================================
 	function generateAdminMenu()
 	{
 		$html = "<ul>";
 		$html .= '<li><a href="{BA_PROGRAM_URL}">Site Home</a></li>';
 		$html .= '<li><a href="{BA_PROGRAM_URL}admin.php">Admin Home</a></li>';
+		$html .= '<li><a href="{BA_PROGRAM_URL}admin.php?af=da">Domain Admin</a></li>';
 		$html .= '<li><a href="{BA_PROGRAM_URL}admin.php?af=sa">Site Admin</a></li>';
 		$html .= '<li><a href="{BA_PROGRAM_URL}admin.php?af=pa">Page Admin</a></li>';
 		$html .= '<li><a href="{BA_PROGRAM_URL}admin.php?af=ma">Module Admin</a></li>';
