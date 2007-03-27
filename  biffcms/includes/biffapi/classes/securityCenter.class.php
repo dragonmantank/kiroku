@@ -1,5 +1,24 @@
 <?php
-
+/******************************************************************************
+ * Filename:		securityCenter.class.phpp
+ * Description:		Allows user authentication via the internal CMS authentication
+ * Creation Date:	Uknown (Before 03/26/2007 updates)
+ * Original Author:	Chris Tankersley (dragonmantank@gmail.com)
+ * 
+ * Custom Modifications:
+ * =====================
+ *
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ *
+ * BCMS Modifications:
+ * =====================
+ * CRT = Chris Tankersley
+ * 
+ * MM/DD/YYYY	PRGMR	DESCRIPTION OF CHANGES
+ * ----------	-----	----------------------
+ * 03/26/2007	CRT		Changed to use the new user group globals
+ *****************************************************************************/
 class securityCenter extends apiObject
 {
 	function securityCenter()
@@ -23,7 +42,7 @@ class securityCenter extends apiObject
 		if(is_array($allowed_groups))
 		{
 			// Do the actual search and pass or fail (Super Users will pass)
-			if( (array_search($_SESSION['user_group'], $allowed_groups)) || ($_SESSION['user_group'] == $this->FindGroupID("Super Users")) )
+			if( (array_search($_SESSION['user_group'], $allowed_groups)) || ($_SESSION['user_group'] == $this->FindGroupID(CMS_GROUP_SUPER_USER)) )
 			{
 				$bool = true;
 			}
@@ -38,7 +57,7 @@ class securityCenter extends apiObject
 			if($allowed_groups !== "Any")
 			{
 				// See if they match the group or are a Super User
-				if( ($_SESSION['user_group'] == $allowed_groups) || ($_SESSION['user_group'] == $this->FindGroupID("Super Users")) )
+				if( ($_SESSION['user_group'] == $allowed_groups) || ($_SESSION['user_group'] == $this->FindGroupID(CMS_GROUP_SUPER_USER)) )
 				{
 					$bool = true;
 				}
