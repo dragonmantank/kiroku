@@ -2,10 +2,10 @@
 
 // Globals
 define("DB_USERNAME", "root");
-define("DB_PASSWORD", "");
+define("DB_PASSWORD", "daschund");
 define("DB_SERVER", "localhost");
 define("DB_DATABASE", "biffcms");
-define("DB_PREFIX", "");
+define("DB_PREFIX", "sd_");
 define("DB_TYPE", "mysql");
 
 class sqlInterface extends apiObject

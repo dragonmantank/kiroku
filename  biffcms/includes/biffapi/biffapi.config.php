@@ -2,8 +2,8 @@
 
 define("BA_PROGRAM_NAME", "BiffSiteBuilder");
 define("BA_ADMIN_EMAIL", "you@yourdomain.com");
-define("BA_PROGRAM_DIR", "/var/www/");
-define("BA_PROGRAM_URL", "http://www.yourdomain.com/");
+define("BA_PROGRAM_DIR", "C:\\Program Files\\xampp\\htdocs\\biffcms\\");
+define("BA_PROGRAM_URL", "http://localhost/biffcms/");
 define("BA_TEMPLATE_DIR", BA_PROGRAM_DIR."templates/");
 define("BA_THEME_DIR", BA_PROGRAM_DIR."themes/");
 define("BA_THEME_DEFAULT_DIR", BA_THEME_DIR."default/");

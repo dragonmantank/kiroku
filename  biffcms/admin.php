@@ -41,13 +41,36 @@ $template->replaceTags(array(
 $template = $programObject->replaceGlobalTags($template);
 $template->display();
 
-// ============================================================================
+// ========================================================================
+// Function:	pageInfo
+// Purpose:		Includes the needed Admin section and sets up some info
+// Parameters:	(none)
+// Returns:		array(
+//					str body
+//					str title
+//				)
+// Created:		Unknown (Before 03/30/2007 Update)
+// 
+// Modifications:
+// ==============
+// CRT = Chris Tankersley
+// 
+// MM/DD/YYYY	PGRMR	DESCRIPTION OF CHANGES
+// ----------	-----	----------------------
+// 03/30/2007	CRT		Added 'User Admin' check and organized cases 
+//						alphabetically
+// ========================================================================
 function pageInfo()
 {
 	$programObject = new programObject;
 	
 	switch($_GET['af'])
 	{
+		case "da":
+			include_once $programObject->settings['BA_PROGRAM_DIR'].'admin/domain_admin.php';
+			$pageInfo['body']	= afMain();
+			$pageInfo['title']	= "Domain Administration";
+			break;
 		case "ma":
 			include_once $programObject->settings['BA_PROGRAM_DIR'].'admin/module_admin.php';
 			$pageInfo['body']	= afMain();
@@ -63,10 +86,10 @@ function pageInfo()
 			$pageInfo['body'] 	= afMain();
 			$pageInfo['title']	= "Site Information";
 			break;
-		case "da":
-			include_once $programObject->settings['BA_PROGRAM_DIR'].'admin/domain_admin.php';
+		case "ua":
+			include_once $programObject->settings['BA_PROGRAM_DIR'].'admin/user_admin.php';
 			$pageInfo['body']	= afMain();
-			$pageInfo['title']	= "Domain Administration";
+			$pageInfo['title']	= "User Administration";
 			break;
 		default:
 			$pageInfo['body'] 	= adminMain();
