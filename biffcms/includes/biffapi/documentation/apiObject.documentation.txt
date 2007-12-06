@@ -1,0 +1,6 @@
+apiObject
+=========
+
+Description:
+------------
+This object returns all of the global variables as an array. This object is meant to be used as a parent class and not as a direct object.
