@@ -17,7 +17,7 @@ class Tws_Bootstrap
      *
      * @var Zend_Controller_Front
      */
-    protected $_frontController
+    protected $_frontController;
 
     /**
      * Router used for custom routing
@@ -31,7 +31,7 @@ class Tws_Bootstrap
      */
     public function __construct()
     {
-        Zend_Loader::registerAutoload()
+        Zend_Loader::registerAutoload();
         $this->_frontController = Zend_Controller_Front::getInstance();
         $this->_router          = $this->_frontController->getRouter();
     }
