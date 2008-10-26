@@ -1,0 +1,17 @@
+<?php
+$this->headTitle('Edit Page');
+$this->headScript()->appendFile('/js/tiny_mce/tiny_mce.js', 'text/javascript');
+
+$this->headScript()->captureStart();
+?>
+tinyMCE.init({
+	mode : "textareas",
+	theme : "advanced"
+});
+<?php
+$this->headScript()->captureEnd();
+?>
+
+<h1>Edit Page</h1>
+
+<?= $this->form; ?>

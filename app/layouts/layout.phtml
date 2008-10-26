@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+<?php
+	$this->headTitle()->prepend('BiffCMS');
+	$this->headTitle()->setSeparator(' :: ');
+	print $this->headTitle();
+?>
+
+	<script type="text/javascript" src="/js/jquery/jquery-1.2.6.min.js"></script>
+	<?= $this->headScript(); ?>
+	
+	<link rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<?= $this->headLink(); ?>
+</head>
+
+<body>
+<div id="doc" class="yui-t7">
+	<div id="hd"><h1>BiffCMS - Home</h1></div>
+		<div id="bd">
+			<div class="yui-g">
+				<!-- YOUR DATA GOES HERE -->
+				<?= $this->layout()->content; ?>
+			</div>
+		</div>
+		<div id="ft">Footer is here.</div>
+	</div>
+</body>
+</html>
