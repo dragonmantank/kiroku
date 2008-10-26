@@ -1,0 +1,32 @@
+<?php
+	$this->headTitle('Pages');
+?>
+
+<h1>Available Pages</h1>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.stripped tbody tr:even').addClass('evenRow');
+	});
+</script>
+
+<table width="100%" cellspacing="0" class="stripped">
+	<thead>
+		<tr>
+			<th>Page</th>
+			<th>Parent</th>
+			<th>Module</th>
+			<th>Status</th>
+			<th>Settings</th>
+			<th>Delete</th>
+			<th>Homepage</th>
+	<thead>
+	<tbody>
+		<?= $this->partialLoop('_partials/admin/pages/index-pages.phtml', $this->pages); ?>
+	<tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7" align="right"><a href="/admin/pages/add">Add New Page</a></td>
+		</tr>
+	</tfoot>
+</table>

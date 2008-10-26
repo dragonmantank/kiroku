@@ -1,0 +1,17 @@
+<?php
+$this->headTitle('Add New Page');
+$this->headScript()->appendFile('/js/tiny_mce/tiny_mce.js', 'text/javascript');
+
+$this->headScript()->captureStart();
+?>
+tinyMCE.init({
+	mode : "textareas",
+	theme : "advanced"
+});
+<?php
+$this->headScript()->captureEnd();
+?>
+
+<h1>Add New Page</h1>
+
+<?= $this->form; ?>
