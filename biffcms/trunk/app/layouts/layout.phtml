@@ -13,19 +13,20 @@
 	
 	<link rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/themes/default/style.css">
 	<?= $this->headLink(); ?>
 </head>
 
 <body>
 <div id="doc" class="yui-t7">
-	<div id="hd"><h1>BiffCMS - Home</h1></div>
-		<div id="bd">
-			<div class="yui-g">
-				<!-- YOUR DATA GOES HERE -->
-				<?= $this->layout()->content; ?>
-			</div>
+	<div id="hd"><h1>BiffCMS</h1></div>
+	<div id="bd">
+        <div class="yui-g">
+			<!-- YOUR DATA GOES HERE -->
+			<?= $this->layout()->content; ?>
 		</div>
-		<div id="ft">Footer is here.</div>
 	</div>
+	<div id="ft"><a href="http://blogs.tankersleywebsolutions.com">BiffCMS - Copyright 2008 Chris Tankersley</a></div>
+</div>
 </body>
 </html>

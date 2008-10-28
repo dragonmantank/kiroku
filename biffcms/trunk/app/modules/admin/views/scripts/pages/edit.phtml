@@ -1,1 +1,17 @@
+<?php
+$this->headScript()->appendFile('/js/fckeditor/fckeditor.js');
+
+$this->headScript()->captureStart();
+?>
+
+$(document).ready(function() {
+    var oFckEditor = new FCKeditor('pageText');
+    oFckEditor.BasePath = '/js/fckeditor/';
+    oFckEditor.ReplaceTextarea();
+});
+
+<?php
+$this->headScript()->captureEnd();
+?>
+
 <?= $this->editMode; ?>
