@@ -15,5 +15,7 @@ class Admin_IndexController extends Zend_Controller_Action
 			$this->_redirect('auth');
 			}
 		}
+
+        $this->_helper->layout->setLayout('admin-layout');
 	}
 }

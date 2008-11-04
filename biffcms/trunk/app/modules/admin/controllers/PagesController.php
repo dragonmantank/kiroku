@@ -54,6 +54,11 @@ class Admin_PagesController extends Zend_Controller_Action
 
 		$this->view->pages	= $table->fetchAll();
 	}
+
+    public function init()
+    {
+        $this->_helper->layout->setLayout('admin-layout');
+    }
 	
 	public function sethomepageAction()
 	{
