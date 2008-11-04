@@ -1,0 +1,75 @@
+html {
+    min-height: 100%;
+    height:     100%;
+} 
+
+body {
+    background-color:   #F9F9F9;
+    min-height:         100%;
+}
+
+#doc3 {
+    border: 1px solid black;
+}
+
+#hd {
+    background:     url('/images/admin/header-background.png');
+    height:         100px;
+    border-bottom:  1px solid black;
+}
+
+#hd h1 {
+    font:           24pt Arial;
+    font-weight:    bold;
+    padding:        10px;
+}
+
+#nav {
+    float:          right;
+    line-height:    normal;
+}
+
+#nav ul {
+    margin:         0px;
+    padding:        0px;
+    list-style:     none;
+    top:            -32px;
+    position:       relative;
+    margin-right:   5px;
+}
+
+#nav li {
+    float:          right;
+    margin:         0px;
+    margin-left:    5px;
+    padding:        0px;
+    border-top:     1px solid white;
+    border-right:   1px solid white;
+    border-left:    1px solid white;
+}
+
+#nav a {
+    display:            block;
+    text-decoration:    none;
+    font-family:        Arial;
+    font-weight:        bold;
+    color:              white;
+    padding:            7px 15px;
+    background:         url('/images/admin/nav-button-background.png');
+    text-transform:     uppercase;
+}
+
+#nav a:hover {
+    text-decoration:    underline;
+}
+
+#bd {
+    background-color:   white;
+}
+
+#ft {
+    height:             25px;
+    text-align:         right;
+    font-size:          8pt;
+    background-color:   white;
+}
