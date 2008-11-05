@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.stripped tbody tr:even').addClass('evenRow');
+		$('.stripped tr:even').addClass('evenRow');
 	});
 </script>
 
@@ -20,6 +20,7 @@
 			<th>Settings</th>
 			<th>Delete</th>
 			<th>Homepage</th>
+		</tr>
 	<thead>
 	<tbody>
 		<?= $this->partialLoop('_partials/admin/pages/index-pages.phtml', $this->pages); ?>
