@@ -1,11 +1,30 @@
 html {
     min-height: 100%;
     height:     100%;
-} 
+}
 
 body {
     background-color:   #F9F9F9;
     min-height:         100%;
+    font-family:		Helvetica;
+}
+
+h1 {
+	font-size:			20pt;
+	font-weight:		bold;
+	color:				#2358b8;
+	padding:			5px 5px 0px 5px;
+	text-decoration:	underline;
+}
+
+th {
+	background-image:	url('/images/admin/nav-button-background.png');
+	height:				30px;
+	color:				white;
+	text-align:			center;
+	vertical-align:		middle;
+	font-weight:		bold;
+	font-size:			10pt;
 }
 
 #doc3 {
@@ -19,9 +38,11 @@ body {
 }
 
 #hd h1 {
-    font:           24pt Arial;
-    font-weight:    bold;
-    padding:        10px;
+    font:           	24pt Helvetica;
+    font-weight:    	bold;
+    padding:        	10px;
+    color:				white;
+    text-decoration:	none;
 }
 
 #nav {
@@ -33,38 +54,47 @@ body {
     margin:         0px;
     padding:        0px;
     list-style:     none;
-    top:            -32px;
+    top:            -34px;
     position:       relative;
-    margin-right:   5px;
+    margin-right:   0px;
+    height:			30px;
+    background:     url('/images/admin/nav-button-background.png');
 }
 
 #nav li {
     float:          right;
     margin:         0px;
-    margin-left:    5px;
+    margin-left:    0px;
     padding:        0px;
-    border-top:     1px solid white;
-    border-right:   1px solid white;
-    border-left:    1px solid white;
+    border-top:     1px solid #2358b8;
+    border-right:   1px solid #1B4591;
+    border-left:    1px solid #1B4591;
+    border-bottom:	none;
+    height:			30px;
 }
 
 #nav a {
     display:            block;
     text-decoration:    none;
-    font-family:        Arial;
+    font-family:        Helvetica;
     font-weight:        bold;
     color:              white;
     padding:            7px 15px;
     background:         url('/images/admin/nav-button-background.png');
     text-transform:     uppercase;
+    font-size:			10pt;
 }
 
 #nav a:hover {
     text-decoration:    underline;
+    background-color:	#D9EAFB;
+    background-image:	none;
+    color:				black;
 }
 
 #bd {
     background-color:   white;
+    padding:			5px;
 }
 
 #ft {
@@ -72,4 +102,9 @@ body {
     text-align:         right;
     font-size:          8pt;
     background-color:   white;
+    line-height:		25px;
+}
+
+.evenRow {
+	background-color:	#D9EAFB;
 }
