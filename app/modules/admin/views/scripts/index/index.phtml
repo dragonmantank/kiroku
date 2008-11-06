@@ -6,7 +6,8 @@
 
 <div class='admin-infoblock'>
     <div class='header'>
-        Recently Added Pages
+        <span class="title">Recently Added Pages</span>
+        <span class="extra"><a href="/admin/pages/add">New Page</a> | <a href="/admin/pages">View All</a></span>
     </div>
     <div class='content'>
         <?php echo $this->partialLoop('_partials/admin/index/infoblock-pages.phtml', $this->pages); ?>

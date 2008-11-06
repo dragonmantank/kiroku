@@ -6,7 +6,8 @@ html {
 body {
     background-color:   #F9F9F9;
     min-height:         100%;
-    font-family:		Helvetica;
+    font-family:		"Lucindaa Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;
+    font-size:          10pt;
 }
 
 h1 {
@@ -120,15 +121,25 @@ dd {
 .admin-infoblock {
     border:     2px solid #D9EAFB;
     display:    inline;
-    width:      250px;
     float:      left;
     margin:     5px;
 }
 
 .admin-infoblock .header {
-    font-weight:        bold;
     background-color:   #D9EAFB;
     border:             1px solid white;
-    font-size:          12pt;
     padding:            5px;
+    clear:              both;
+}
+
+.admin-infoblock .header .title {
+    font-size:          12pt;
+    text-align:         left;
+    font-weight:        bold;
+}
+
+.admin-infoblock .header .extra {
+    font-size:      10pt;
+    text-align:     right;
+    padding-left:   20px;
 }
