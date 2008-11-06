@@ -52,7 +52,7 @@ class Admin_PagesController extends Zend_Controller_Action
 	{
 		$table	= new Pages();
 
-		$this->view->pages	= $table->fetchAll();
+		$this->view->pages	= $table->fetchPages();
 	}
 
     public function init()

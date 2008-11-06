@@ -3,7 +3,18 @@
 class Pages extends Zend_Db_Table_Abstract
 {
 	protected $_name	= 'cms_pages';
-	
+
+    public function fetchPages()
+    {
+        $select = $this->getDefaultAdapter()->select();
+        $select->from(array('p' => $this->_name))
+               ->joinLeft(array('p2' => $this->_name), 'p.parent_page = p2.id', array('parent_name' => 'name'))
+               ->joinLeft(array('m' => 'cms_modules'), 'p.module = m.id', array('module_name' => 'name'))
+               ->order('p.name ASC');
+
+        return $select->query()->fetchAll();       
+    }
+
 	public function fetchPairs(array $pairs)
 	{
 		$db		= $this->getDefaultAdapter();
