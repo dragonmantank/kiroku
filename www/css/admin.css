@@ -27,6 +27,14 @@ th {
 	font-size:			10pt;
 }
 
+dt {
+    font-weight:    bold;
+}
+
+dd {
+    margin-left:    20px;
+}
+
 #doc3 {
     border: 1px solid black;
 }
@@ -107,4 +115,20 @@ th {
 
 .evenRow {
 	background-color:	#D9EAFB;
+}
+
+.admin-infoblock {
+    border:     2px solid #D9EAFB;
+    display:    inline;
+    width:      250px;
+    float:      left;
+    margin:     5px;
+}
+
+.admin-infoblock .header {
+    font-weight:        bold;
+    background-color:   #D9EAFB;
+    border:             1px solid white;
+    font-size:          12pt;
+    padding:            5px;
 }
