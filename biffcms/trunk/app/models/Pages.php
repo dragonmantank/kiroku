@@ -21,6 +21,16 @@ class Pages extends Zend_Db_Table_Abstract
 		$sql	= $db->quoteInto('SELECT ?, ? FROM `' . $this->_name . '` ORDER BY `name` ASC', array($pairs[0], $pairs[1])); 
 		return $db->fetchAll($sql);
 	}
+
+    public function fetchSummaryList($limit = 5)
+    {
+        $select = $this->getDefaultAdapter()->select();
+        $select->from($this->_name)
+               ->limit('5')
+               ->order('id DESC');
+
+        return $select->query()->fetchAll();
+    }
 	
 	public function insert(array $data)
 	{

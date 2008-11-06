@@ -4,5 +4,11 @@
 
 <h1>Admin</h1>
 
-<a href="/admin/pages">Page Admin</a><br />
-<a href="/admin/playerreg">Player Registration</a><br />
+<div class='admin-infoblock'>
+    <div class='header'>
+        Recently Added Pages
+    </div>
+    <div class='content'>
+        <?php echo $this->partialLoop('_partials/admin/index/infoblock-pages.phtml', $this->pages); ?>
+    </div>
+</div>

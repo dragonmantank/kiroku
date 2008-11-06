@@ -3,7 +3,11 @@
 class Admin_IndexController extends Zend_Controller_Action
 {
 	public function indexAction()
-	{ }
+	{ 
+        $pages  = new Pages;
+
+        $this->view->pages = $pages->fetchSummaryList();
+    }
 	
 	public function init()
 	{
