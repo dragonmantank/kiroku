@@ -6,7 +6,7 @@ set_include_path('.' . PATH_SEPARATOR .
 				 HEARTBEAT_DIR . '/../libs/' . PATH_SEPARATOR . 
 				 HEARTBEAT_DIR . '/../shared/' . PATH_SEPARATOR . 
 				 HEARTBEAT_DIR . '/../app/' . PATH_SEPARATOR . 
-				 HEARTBEAT_DIR . '/../app/model/' . PATH_SEPARATOR . 
+				 HEARTBEAT_DIR . '/../app/models/' . PATH_SEPARATOR . 
 				 get_include_path() . PATH_SEPARATOR
 );
 
@@ -16,7 +16,7 @@ Zend_Loader::registerAutoload();
 
 $registry	= Zend_Registry::getInstance();
 
-$config = new Zend_Config_Ini('config/global.ini', 'development');
+$config = new Zend_Config_Ini('config/config.ini', 'production');
 $registry->set('config', $config);
 
 $db = Zend_Db::factory($config->db);

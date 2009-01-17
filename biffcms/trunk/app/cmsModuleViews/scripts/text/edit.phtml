@@ -1,3 +1,18 @@
+<script type="text/javascript" src="/js/fckeditor/fckeditor.js"></script>
+<script type="text/javascript">
+	function initEditor() {
+		var oFCKeditor = new FCKeditor( 'pageText' ) ;
+		oFCKeditor.Height = '512';
+		oFCKeditor.Width = '550';
+		oFCKeditor.BasePath = "/js/fckeditor/" ;
+		oFCKeditor.ReplaceTextarea() ;
+	}
+	
+	$(document).ready(function() {
+		initEditor();
+	});
+</script>
+
 <form method="post">
 	<textarea name="pageText" cols="75" rows="20"><?= $this->existingText; ?></textarea>
 	

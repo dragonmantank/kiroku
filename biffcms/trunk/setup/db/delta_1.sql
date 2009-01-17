@@ -1,0 +1,1 @@
+ALTER TABLE `cms_module_cmslink` ADD `params` VARCHAR( 255 ) NOT NULL ;

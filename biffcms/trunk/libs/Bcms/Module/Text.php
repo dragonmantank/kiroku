@@ -32,7 +32,7 @@ class Bcms_Module_Text extends Bcms_Module
 	{
 		$view = $this->_getView();
 		
-		$view->existingText	= $this->_text;
+		$view->existingText	= stripslashes($this->_text);
 		
 		return $view->render('text/edit.phtml');
 	}

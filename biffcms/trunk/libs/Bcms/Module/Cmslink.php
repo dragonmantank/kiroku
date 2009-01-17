@@ -14,6 +14,7 @@ class Bcms_Module_Cmslink extends Bcms_Module
 	protected $_module;
 	protected $_controller;
 	protected $_action;
+	protected $_params;
 	
 	public function __construct($pageId = null)
 	{
@@ -28,6 +29,7 @@ class Bcms_Module_Cmslink extends Bcms_Module
 				$this->_module		= $row['module'];
 				$this->_controller	= $row['controller'];
 				$this->_action		= $row['action'];
+				$this->_params		= $row['params'];
 			} else {
 				throw new Exception('Unable to find a match for page ' . $pageId . ' in CmsLink Module');
 			}
@@ -41,6 +43,7 @@ class Bcms_Module_Cmslink extends Bcms_Module
 		$view->module		= $this->_module;
 		$view->controller	= $this->_controller;
 		$view->action		= $this->_action;
+		$view->params		= $this->_params;
 		
 		return $view->render('cmslink/edit.phtml');
 	}
@@ -58,6 +61,7 @@ class Bcms_Module_Cmslink extends Bcms_Module
 		$this->_module		= $f->filter($data['module']);
 		$this->_controller	= $f->filter($data['controller']);
 		$this->_action		= $f->filter($data['action']);
+		$this->_params		= $data['params'];
 		
 		$this->_save();
 	}
@@ -67,9 +71,10 @@ class Bcms_Module_Cmslink extends Bcms_Module
 		$link[]	= $this->_module;
 		$link[]	= $this->_controller;
 		$link[]	= $this->_action;
-		
+		$link[]	= $this->_params;
+
 		for($i = 0; $i < count($link); $i++) {
-			if($link[$i] == 'index') {
+			if($link[$i] == '') {
 				unset($link[$i]);
 			}
 		}
@@ -84,6 +89,7 @@ class Bcms_Module_Cmslink extends Bcms_Module
 			'module'		=> $this->_module,
 			'controller'	=> $this->_controller,
 			'action'		=> $this->_action,
+			'params'		=> $this->_params,
 		);
 		
 		$this->_db->update($this->_table, $data, 'pageId = ' . $this->_pageId);
