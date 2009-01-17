@@ -1,0 +1,21 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.stripped tr:even').addClass('evenRow');
+	});
+</script>
+
+<h1>Module Administration</h1>
+
+<h2>Installed Page Modules</h2>
+
+<table class="stripped" cellspacing="0" width="100%">
+	<thead>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Status</th>
+		<th>Uninstall</th>
+	</thead>
+	<tbody>
+		<?php echo $this->partialLoop('modules/_partials/installedModules.phtml', $this->installedModules);?>
+	</tbody>
+</table>

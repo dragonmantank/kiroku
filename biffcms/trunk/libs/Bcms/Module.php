@@ -40,7 +40,7 @@ abstract class Bcms_Module
 	{
 		$config = Zend_Registry::get('config');
 		$view   = new Zend_View();
-		$view->addBasePath($config->modules->viewPath);
+		$view->addBasePath(BCMS_MODULE_VIEWPATH);
 	    
 	    return $view;             
 	}
