@@ -1,0 +1,13 @@
+<h1>User Administration</h1>
+
+<div class='admin-infoblock'>
+    <div class='header'>
+        <span class="title">Recently Added Users</span>
+        <span class="extra"><a href="/admin/users/add">New User</a> | <a href="/admin/users/viewall">View All</a></span>
+    </div>
+    <div class='content'>
+    	<ul>
+	        <?php echo $this->partialLoop('users/_partials/index/infoblock-users.phtml', $this->users); ?>
+	    </ul>
+    </div>
+</div>
