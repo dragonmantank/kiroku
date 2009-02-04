@@ -35,9 +35,9 @@ Zend_Registry::set('db', $db);
 $bootstrap->throwExceptions(true);
 $bootstrap->registerPlugin('Zend_Controller_Plugin_ErrorHandler');
 $bootstrap->setControllerDirectory(array(
-	'admin'		=> '../app/modules/admin/controllers',
-	'auth'		=> '../app/modules/auth/controllers',
-	'default'	=> '../app/modules/default/controllers',
+	'admin'		=> '../sections/admin/controllers',
+	'auth'		=> '../sections/auth/controllers',
+	'default'	=> '../sections/default/controllers',
 ));
 $bootstrap->setParam('useDefaultControllerAlways', true);
 
