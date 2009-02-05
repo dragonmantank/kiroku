@@ -3,6 +3,8 @@ error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 date_default_timezone_set('America/New_York');
 
+define("INSTALL_PATH", dirname(dirname(__FILE__)));
+
 // Directory setup and class loading
 set_include_path(
 	'.' . 
@@ -30,6 +32,11 @@ $db = Zend_Db::factory($config->db);
 Zend_Db_Table::setDefaultAdapter($db);
 Zend_Registry::set('db', $db);
 
+// Pull in the config from the DB
+$systemConfigModel	= new SystemConfig();
+$systemConfig		= $systemConfigModel->fetchConfig();
+$registry->set('systemConfig', $systemConfig);
+
 // Setup the controller
 $bootstrap->throwExceptions(true);
 $bootstrap->registerPlugin('Zend_Controller_Plugin_ErrorHandler');
@@ -45,7 +52,7 @@ $route	= new Zend_Controller_Router_Route('page/:page', array('module'=>'default
 $bootstrap->addRoute('page', $route);
 
 // Load our layout paths
-Zend_Layout::startMvc( array('layoutPath'	=> '../app/layouts') );
+Zend_Layout::startMvc( array('layoutPath'	=> dirname(__FILE__) . '/themes/' . $systemConfig->theme) );
 
 // Add View Helpers
 $viewRenderer	= Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
