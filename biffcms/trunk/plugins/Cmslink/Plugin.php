@@ -1,11 +1,10 @@
 <?php
 
-require_once 'Bcms/Module.php';
-
-class Bcms_Module_Cmslink extends Bcms_Module
+class Cmslink_Plugin extends Bcms_Module
 {
 	protected $_db;
 	protected $_table	= 'cms_module_cmslink';
+	protected $_name	= 'Cmslink';
 	
 	// Page Attributes
 	protected $_id;
@@ -45,7 +44,7 @@ class Bcms_Module_Cmslink extends Bcms_Module
 		$view->action		= $this->_action;
 		$view->params		= $this->_params;
 		
-		return $view->render('cmslink/edit.phtml');
+		return $view->render('edit.phtml');
 	}
 	
 	public function insertDefaultPage($pageId)

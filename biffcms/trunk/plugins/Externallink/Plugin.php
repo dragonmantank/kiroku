@@ -1,11 +1,10 @@
 <?php
 
-require_once 'Bcms/Module.php';
-
-class Bcms_Module_Externallink extends Bcms_Module
+class Externallink_Plugin extends Bcms_Module
 {
 	protected $_db;
 	protected $_table	= 'cms_module_externallink';
+	protected $_name	= 'Externallink';
 	
 	// Page Attributes
 	protected $_id;
@@ -36,7 +35,7 @@ class Bcms_Module_Externallink extends Bcms_Module
 		$view->linkName		= $this->_linkName;
 		$view->url			= $this->_url;
 		
-		return $view->render('externallink/edit.phtml');
+		return $view->render('edit.phtml');
 	}
 	
 	public function insertDefaultPage($pageId)

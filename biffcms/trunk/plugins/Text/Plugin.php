@@ -1,11 +1,10 @@
 <?php
 
-require_once 'Bcms/Module.php';
-
-class Bcms_Module_Text extends Bcms_Module
+class Text_Plugin extends Bcms_Module
 {
 	protected $_db;
 	protected $_table	= 'cms_module_text';
+	protected $_name	= 'Text';
 	
 	// Page Attributes
 	protected $_id;
@@ -34,7 +33,7 @@ class Bcms_Module_Text extends Bcms_Module
 		
 		$view->existingText	= stripslashes($this->_text);
 		
-		return $view->render('text/edit.phtml');
+		return $view->render('edit.phtml');
 	}
 	
 	public function insertDefaultPage($pageId)

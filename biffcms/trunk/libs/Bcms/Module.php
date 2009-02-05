@@ -31,16 +31,15 @@ abstract class Bcms_Module
 	{
 		$db			= Zend_Registry::get('db');
 		list($name)	= $db->fetchCol('SELECT `name` FROM `cms_modules` WHERE `id` = ?', $id);
-		$className	= 'Bcms_Module_' . ucfirst($name);
+		$className	= ucfirst($name) . '_Plugin';
 		
 		return new $className($pageId);
 	}
 	
 	protected function _getView()
 	{
-		$config = Zend_Registry::get('config');
 		$view   = new Zend_View();
-		$view->addBasePath(BCMS_MODULE_VIEWPATH);
+		$view->addBasePath(dirname(dirname(dirname(__FILE__))) . '/plugins/' . ucfirst($this->_name) . '/views/');
 	    
 	    return $view;             
 	}

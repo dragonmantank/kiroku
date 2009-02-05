@@ -10,10 +10,9 @@ set_include_path(
 	PATH_SEPARATOR . '../libs/' . 
 	PATH_SEPARATOR . '../app/models' . 
 	PATH_SEPARATOR . '../app/forms' .
+	PATH_SEPARATOR . '../plugins' . 
 	PATH_SEPARATOR . get_include_path() );
 	
-define('BCMS_MODULE_VIEWPATH', dirname(dirname(__FILE__)) . '/app/cmsModuleViews/');
-
 include 'Zend/Loader.php';
 include 'Tws/Bootstrap.php';
 
