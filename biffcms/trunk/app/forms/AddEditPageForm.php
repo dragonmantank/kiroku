@@ -28,7 +28,7 @@ class AddEditPageForm extends Zend_Form
 		$parent_page->setLabel('Parent:')
 					->setMultiOptions($pages);
 					
-		$modules	= $db->fetchPairs('SELECT `id`,`name` FROM `cms_modules` ORDER BY `name` ASC');
+		$modules	= $db->fetchPairs('SELECT `id`,`name` FROM `cms_modules` WHERE `active` = 1 ORDER BY `name` ASC');
 		$module->setLabel('Module:')
 			   ->setMultiOptions($modules);
 			   

@@ -2,6 +2,25 @@
 
 class Admin_ModulesController extends Zend_Controller_Action
 {
+	public function changestatusAction()
+	{
+		$this->_helper->layout->disableLayout();
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$modules	= new Modules();
+		
+		try {
+			$message['status']	= $modules->changeStatus($this->_request->getParam('id'));
+			$message['success'] = 1;
+			$message['message']	= 'Status was changed';
+		} catch (Exception $e) {
+			$message['success']	= 0;
+			$message['message']	= $e->getMessage();
+		}
+		
+		echo json_encode($message);
+	}
+	
 	public function init()
 	{
 		$auth	= Zend_Auth::getInstance();
@@ -18,8 +37,11 @@ class Admin_ModulesController extends Zend_Controller_Action
 	
 	public function indexAction()
 	{
-		$modules	= new Modules;
+		$modulesTable		= new Modules;
+		$installedModules	= $modulesTable->fetchInstalled();
+		$uninstalledModules	= $modulesTable->fetchUninstalled();
 		
-		$this->view->installedModules	= $modules->fetchAll();
+		$this->view->installedModules	= $installedModules;
+		$this->view->uninstalledModules	= $uninstalledModules;
 	}
 }

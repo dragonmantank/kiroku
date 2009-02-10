@@ -1,21 +1,56 @@
 <script type="text/javascript">
+	function changeStatus(id) {
+		$.ajax({
+			data: { 'id': id },
+			dataType: 'json',
+			error: function(rqs, status, error) {
+				alert('There was a problem changing the status of the plugin.');
+			},
+			success: function(rsp) {
+				if(rsp.success == 1) {
+					$('#status_' + id).html((rsp.status == 0 ? 'Inactive' : 'Active'));
+				} else {
+					alert(rsp.message);
+				}
+			},
+			type: 'GET',
+			url: '/admin/modules/changestatus/'
+		});
+	}
+	
 	$(document).ready(function() {
 		$('.stripped tr:even').addClass('evenRow');
 	});
 </script>
 
-<h1>Module Administration</h1>
+<h1>Plugin Administration</h1>
 
-<h2>Installed Page Modules</h2>
+<h2>Installed Plugins</h2>
 
 <table class="stripped" cellspacing="0" width="100%">
 	<thead>
-		<th>Name</th>
-		<th>Description</th>
-		<th>Status</th>
-		<th>Uninstall</th>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Status</th>
+			<th>Uninstall</th>
+		</tr>
 	</thead>
 	<tbody>
 		<?php echo $this->partialLoop('modules/_partials/installedModules.phtml', $this->installedModules);?>
+	</tbody>
+</table>
+
+<h2>Uninstalled Plugins</h2>
+
+<table class="stripped" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Install</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php echo $this->partialLoop('modules/_partials/uninstalledModules.phtml', $this->uninstalledModules);?>
 	</tbody>
 </table>

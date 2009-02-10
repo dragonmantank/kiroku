@@ -10,12 +10,16 @@ body {
     font-size:          10pt;
 }
 
-h1 {
+h1, h2 {
 	font-size:			20pt;
 	font-weight:		bold;
 	color:				#2358b8;
 	padding:			5px 5px 0px 5px;
 	text-decoration:	underline;
+}
+
+h2 {
+	font-size:	16pt;
 }
 
 th {
@@ -142,4 +146,10 @@ dd {
     font-size:      10pt;
     text-align:     right;
     padding-left:   20px;
+}
+
+.fakeLink {
+	color:				blue;
+	text-decoration:	underline;
+	cursor:				pointer;
 }

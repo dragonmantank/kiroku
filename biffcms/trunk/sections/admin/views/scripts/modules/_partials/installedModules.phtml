@@ -1,6 +1,6 @@
 <tr>
 	<td><?php echo $this->name; ?></td>
 	<td><?php echo $this->description; ?></td>
-	<td align="center"><?php echo ($this->active ? "Active" : "Inactive"); ?></td>
-	<td align="center">Delete</td>
+	<td align="center" class="fakeLink" id="status_<?php echo $this->id; ?>" onClick="changeStatus(<?php echo $this->id; ?>)"><?php echo ($this->active ? "Active" : "Inactive"); ?></td>
+	<td align="center">Uninstall</td>
 </tr>
