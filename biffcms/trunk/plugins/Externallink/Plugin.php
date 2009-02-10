@@ -3,8 +3,9 @@
 class Externallink_Plugin extends Bcms_Module
 {
 	protected $_db;
-	protected $_table	= 'cms_module_externallink';
-	protected $_name	= 'Externallink';
+	protected $_table		= 'cms_module_externallink';
+	protected $_name		= 'Externallink';
+	protected $_description	= 'Sets up a redirect to an outside URL';
 	
 	// Page Attributes
 	protected $_id;
@@ -44,6 +45,26 @@ class Externallink_Plugin extends Bcms_Module
 		$db->insert($this->_table, array('pageId'=>$pageId));
 	}
 	
+	public function install()
+	{
+		$sql = 'CREATE TABLE IF NOT EXISTS `cms_module_externallink` (
+  					`id` int(11) NOT NULL auto_increment,
+  					`pageId` int(11) NOT NULL,
+  					`linkName` varchar(255) NOT NULL,
+  					`url` varchar(255) NOT NULL,
+  					PRIMARY KEY  (`id`)
+				) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;';
+		
+		try {
+			$modules	= new Modules();
+			$modules->getAdapter()->getConnection()->query($sql);
+			$modules->insert(array('name' => strtolower($this->_name), 'description' => $this->_description));
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
+	}
+	
 	public function updateText($data)
 	{
 		$f					= new Zend_Filter_Alnum();
@@ -67,4 +88,15 @@ class Externallink_Plugin extends Bcms_Module
 		
 		$this->_db->update($this->_table, $data, 'pageId = ' . $this->_pageId);
 	}
+	
+	public function uninstall()
+	{
+		$modules	= new Modules();
+			
+		$modules->getAdapter()->getConnection()->query('DROP TABLE `cms_module_externallink`');
+		$modules->delete("`name` = '" . strtolower($this->_name) . "'");
+			
+		return true;
+	}
+
 }

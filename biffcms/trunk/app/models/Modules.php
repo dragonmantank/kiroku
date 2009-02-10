@@ -21,9 +21,9 @@ class Modules extends Zend_Db_Table_Abstract
 		$dirHandle			= opendir($dir);
 		$uninstalledPlugins	= array();
 		while($file = readdir($dirHandle)) {
-			if(is_dir($file) && !in_array(strtolower($file), $installedPlugins)) {
+			if(is_dir($dir . $file) && !in_array(strtolower($file), $installedPlugins)) {
 				if( ($file != '.') && ($file != '..')) {
-					$uninstalledPlugins[] = strtolower($file);
+					$uninstalledPlugins[] = array('name' => strtolower($file));
 				}
 			}
 		}

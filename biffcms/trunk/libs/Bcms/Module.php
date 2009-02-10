@@ -43,4 +43,15 @@ abstract class Bcms_Module
 	    
 	    return $view;             
 	}
+	
+	public function install()
+	{
+		$modules->insert(array('name' => strtolower($this->_name), 'description' => $this->_description));
+	}
+	
+	public function uninstall()
+	{
+		$modules	= new Modules();
+		$modules->delete("`name` = '" . strtolower($this->_name) . "'");
+	}
 }

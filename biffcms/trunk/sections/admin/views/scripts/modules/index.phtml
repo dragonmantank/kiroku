@@ -18,6 +18,48 @@
 		});
 	}
 	
+	function installPlugin(name)
+	{
+		$.ajax({
+			data: { 'name' : name },
+			dataType: 'json',
+			error: function(rqs, status, error) {
+				alert('There was a problem calling the installer for the ' + name + ' plugin.');
+			},
+			success: function(rsp) {
+				if(rsp.status) {
+					alert('Plugin ' + name + ' has been installed.');
+					window.location = '/admin/modules';
+				} else {
+					alert('There was a problem installing ' + name);
+				}
+			},
+			type: 'GET',
+			url: '/admin/modules/install/'
+		});
+	}
+	
+	function uninstallPlugin(name)
+	{
+		$.ajax({
+			data: { 'name' : name },
+			dataType: 'json',
+			error: function(rqs, status, error) {
+				alert('There was a problem calling the uninstaller for the ' + name + ' plugin.');
+			},
+			success: function(rsp) {
+				if(rsp.status) {
+					alert('Plugin ' + name + ' has been uninstalled.');
+					window.location = '/admin/modules';
+				} else {
+					alert('There was a problem uninstalling ' + name + '. There error was:\n' + rsp.message);
+				}
+			},
+			type: 'GET',
+			url: '/admin/modules/uninstall/'
+		});
+	}
+	
 	$(document).ready(function() {
 		$('.stripped tr:even').addClass('evenRow');
 	});

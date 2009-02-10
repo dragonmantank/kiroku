@@ -44,4 +44,33 @@ class Admin_ModulesController extends Zend_Controller_Action
 		$this->view->installedModules	= $installedModules;
 		$this->view->uninstalledModules	= $uninstalledModules;
 	}
+	
+	public function installAction()
+	{
+		$this->_helper->layout->disableLayout();
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$moduleName	= ucfirst($this->_request->getParam('name')) . '_Plugin';
+		$module 	= new $moduleName;
+		
+		echo json_encode(array('status' =>$module->install()));
+	}
+	
+	public function uninstallAction()
+	{
+		$this->_helper->layout->disableLayout();
+		$this->_helper->viewRenderer->setNoRender(true);
+		
+		$moduleName	= ucfirst($this->_request->getParam('name')) . '_Plugin';
+		$module 	= new $moduleName;
+		
+		try {
+			$module->uninstall();
+			$message['status']	= true;
+		} catch (Exception $e) {
+			$message['status']	= false;
+			$message['message']	= $e->getMessage();
+		}
+		echo json_encode($message);
+	}
 }

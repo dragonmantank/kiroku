@@ -93,4 +93,9 @@ class Cmslink_Plugin extends Bcms_Module
 		
 		$this->_db->update($this->_table, $data, 'pageId = ' . $this->_pageId);
 	}
+	
+	public function uninstall()
+	{
+		throw new Exception('Plugin `cmslink` is a system plugin and cannot be installed.');
+	}
 }

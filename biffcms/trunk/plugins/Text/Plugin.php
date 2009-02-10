@@ -57,4 +57,9 @@ class Text_Plugin extends Bcms_Module
 	{
 		return $this->_text;
 	}
+	
+	public function uninstall()
+	{
+		throw new Exception('Plugin `text` is a system plugin and cannot be installed.');
+	}
 }
