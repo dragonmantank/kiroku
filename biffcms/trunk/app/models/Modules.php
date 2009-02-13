@@ -12,7 +12,7 @@ class Modules extends Zend_Db_Table_Abstract
 				 ->where('name = ?', $name)
 			);
 			
-		return $id['id'];
+		return $id->id;
 	}
 	
 	public function fetchInstalled()
