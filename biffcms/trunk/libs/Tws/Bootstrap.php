@@ -57,6 +57,19 @@ class Tws_Bootstrap
     {
         $this->_router->addRoute($name, $route);
     }
+    
+    /**
+     * Appends a path to the already defined include path
+     *
+     * @param string $path
+     */
+    static public function appendIncludePath($path)
+    {
+    	set_include_path( 
+    		get_include_path() . 
+    		$path . PATH_SEPARATOR
+    	);
+    }
 
     /**
      * Dispatches the front controller
@@ -64,6 +77,19 @@ class Tws_Bootstrap
     public function dispatch()
     {
         $this->_frontController->dispatch();
+    }
+    
+	/**
+     * Prepends a path to the already defined include path
+     *
+     * @param string $path
+     */
+    static public function prependIncludePath($path)
+    {
+    	set_include_path(
+    		$path . PATH_SEPARATOR .  
+    		get_include_path()
+    	);
     }
 
     /**
