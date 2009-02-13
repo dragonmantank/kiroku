@@ -46,6 +46,7 @@ abstract class Bcms_Module
 	
 	public function install()
 	{
+		$modules	= new Modules();
 		$modules->insert(array('name' => strtolower($this->_name), 'description' => $this->_description));
 	}
 	
