@@ -8,11 +8,11 @@ define("INSTALL_PATH", dirname(dirname(__FILE__)));
 // Directory setup and class loading
 set_include_path(
 	'.' . 
-	PATH_SEPARATOR . '../app' . 
-	PATH_SEPARATOR . '../libs/' . 
-	PATH_SEPARATOR . '../app/models' . 
-	PATH_SEPARATOR . '../app/forms' .
-	PATH_SEPARATOR . '../plugins' . 
+	PATH_SEPARATOR . INSTALL_PATH . '/app' . 
+	PATH_SEPARATOR . INSTALL_PATH . '/libs/' . 
+	PATH_SEPARATOR . INSTALL_PATH . '/app/models' . 
+	PATH_SEPARATOR . INSTALL_PATH . '/app/forms' .
+	PATH_SEPARATOR . INSTALL_PATH . '/plugins' . 
 	PATH_SEPARATOR . get_include_path() );
 	
 include 'Zend/Loader.php';
