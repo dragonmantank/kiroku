@@ -4,6 +4,17 @@ class Modules extends Zend_Db_Table_Abstract
 {
 	protected $_name	= 'cms_modules';
 	
+	public function fetchId($name)
+	{
+		$id	= $this->fetchRow(
+			$this->select()
+				 ->from($this, array('id'))
+				 ->where('name = ?', $name)
+			);
+			
+		return $id['id'];
+	}
+	
 	public function fetchInstalled()
 	{
 		return $this->fetchAll();
