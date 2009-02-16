@@ -14,9 +14,9 @@ body {
 }
 
 #hd {
-    height:             100px;
-    background-image:	url('/themes/default/images/logo.png');
-    background-repeat:	no-repeat;
+    height:             	150px;
+    background-image:		url('/themes/default/images/logo.jpg');
+    background-repeat:		no-repeat;
 }
 
 #hd h1 {
@@ -40,4 +40,26 @@ body {
     background-color:   white;
     line-height:        25px;
     border-top:         1px solid black;
+}
+
+#nav ul li{
+	float:			left;
+	height:			50px;
+	line-height:	50px;
+	margin-right:	20px;
+	margin-left:	20px;
+}
+
+#nav a {
+	color:				white;
+	font-weight:		bold;
+	text-decoration:	none;
+	float:				left;
+}
+
+#nav a:hover {
+	background-image:		url('/themes/default/images/nav_hover.gif');
+	background-repeat:		no-repeat;
+	background-position:	center bottom;
+	text-decoration:		underline;
 }
