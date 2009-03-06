@@ -3,6 +3,9 @@
 	function initEditor() {
 		var oFCKeditor = new FCKeditor( 'pageText' ) ;
 		oFCKeditor.BasePath = "/js/fckeditor/" ;
+		oFCKeditor.Height = '500';
+	    oFCKeditor.ReplaceTextarea();
+		
 	}
 	
 	$(document).ready(function() {
@@ -11,7 +14,7 @@
 </script>
 
 <form method="post">
-	<textarea name="pageText" cols="75" rows="20"><?= $this->existingText; ?></textarea>
+	<textarea name="pageText" cols="75" rows="50"><?= $this->existingText; ?></textarea>
 	
 	<p>
 	<input type="submit" name="save" value="Save">
