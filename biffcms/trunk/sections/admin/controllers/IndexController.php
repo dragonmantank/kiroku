@@ -22,4 +22,6 @@ class Admin_IndexController extends Zend_Controller_Action
 
         $this->_helper->layout->setLayout('admin-layout');
 	}
+	
+	public function logout
 }

@@ -35,6 +35,7 @@ class Auth_IndexController extends Zend_Controller_Action
 	public function logoutAction()
 	{
 		Zend_Auth::getInstance()->clearIdentity();
+		session_destroy();
 		$this->_redirect('/');
 	}
 }
