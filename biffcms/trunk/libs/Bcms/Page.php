@@ -88,9 +88,17 @@ class Bcms_Page
 		$module->updateText($data);
 	}
 	
+	/**
+	 * Returns the contents of a page
+	 *
+	 * Calls the module that powers the page and returns the text that the 
+	 * module renders.
+	 *
+	 * @author Chris Tankersley <chris@tankersleywebsolutions.com>
+	 */
 	public function render()
 	{
 		$module = Bcms_Module::factory($this->_module, $this->_id);
-		return $module->render();
+		return stripslashes($module->render());
 	}
 }
