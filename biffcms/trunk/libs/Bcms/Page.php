@@ -63,7 +63,7 @@ class Bcms_Page
 	
 	public function load($seed)
 	{
-		$column	= ( is_numeric($seed) ? 'id' : 'name');
+		$column	= ( is_numeric($seed) ? 'id' : 'slug');
 		$page	= $this->_db->fetchRow('SELECT * FROM `cms_pages` WHERE `' . $column . '` = ?', $seed);
 		
 		if( $page != null ) {

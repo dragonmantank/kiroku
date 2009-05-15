@@ -32,8 +32,16 @@ class Pages extends Zend_Db_Table_Abstract
         return $select->query()->fetchAll();
     }
 	
+	protected function _generateSlug($title)
+    {
+        $filter = new Zend_Filter_Alnum(true);
+        $title  = strtolower($filter->filter($title));
+        return str_replace(' ', '-', $title);
+    }
+
 	public function insert(array $data)
 	{
+		$data['slug']	= $this->_generateSlug($data['title']);
 		parent::insert($data);
 		$id = $this->getAdapter()->lastInsertId();
 		Bcms_Module::createDefaultPage($data['module'], $id);
