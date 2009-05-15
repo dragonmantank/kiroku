@@ -25,7 +25,7 @@ class Admin_PagesController extends Zend_Controller_Action
 	public function changedisplayAction()
 	{
 		$page = new Bcms_Page($this->_request->getParam('page'));
-		$page->changeDisplayedStatus();
+		$page->changeDisplayStatus();
 		$this->_redirect('admin/pages');
 	}
 	
