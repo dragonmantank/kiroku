@@ -13,6 +13,7 @@ class Bcms_Page
 	protected $_parentPage;
 	protected $_module;
 	protected $_active;
+	protected $_display;
 	protected $_homepage;
 	
 	public function __construct($seed = null)
@@ -22,6 +23,11 @@ class Bcms_Page
 		if($seed != null) {
 			$this->load($seed);
 		}
+	}
+	
+	public function changeDisplayStatus()
+	{
+		$this->_db->update('cms_pages', array('display'=> ($this->_display ? 0 : 1) ), 'id = ' . $this->_id);
 	}
 	
 	public function changeStatus()
@@ -75,6 +81,7 @@ class Bcms_Page
 			$this->_parentPage	= $page['parent_page'];
 			$this->_module		= $page['module'];
 			$this->_active		= $page['active'];
+			$this->_display		= $page['display'];
 			$this->_homepage	= $page['homepage'];
 			
 		} else {
@@ -88,14 +95,6 @@ class Bcms_Page
 		$module->updateText($data);
 	}
 	
-	/**
-	 * Returns the contents of a page
-	 *
-	 * Calls the module that powers the page and returns the text that the 
-	 * module renders.
-	 *
-	 * @author Chris Tankersley <chris@tankersleywebsolutions.com>
-	 */
 	public function render()
 	{
 		$module = Bcms_Module::factory($this->_module, $this->_id);

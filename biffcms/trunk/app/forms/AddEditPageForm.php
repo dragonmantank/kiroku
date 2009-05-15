@@ -12,6 +12,7 @@ class AddEditPageForm extends Zend_Form
 		$parent_page		= new Zend_Form_Element_Select('parent_page');
 		$module				= new Zend_Form_Element_Select('moduleId');
 		$status				= new Zend_Form_Element_Select('status');
+		$display			= new Zend_Form_Element_Select('display');
 		$submit				= new Zend_Form_Element_Submit('submit');
 		$id					= new Zend_Form_Element_Hidden('id');
 		
@@ -34,12 +35,15 @@ class AddEditPageForm extends Zend_Form
 			   
 		$status->setLabel('Status:')
 			   ->setMultiOptions(array('Inactive', 'Active'));
+
+		$display->setLabel('Display Link:')
+			    ->setMultiOptions(array('No', 'Yes'));
 			   
 		$submit->setLabel('Save');
 		
 		$this->addElements(array(
 			$pageName, $pageTitle, $linkName, $pageDescription, $parent_page,
-			$module, $status, $submit, $id,
+			$module, $status, $display, $submit, $id,
 		));
 	}
 }

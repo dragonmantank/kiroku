@@ -22,6 +22,13 @@ class Admin_PagesController extends Zend_Controller_Action
 		$this->view->form = new AddEditPageForm();
 	}
 
+	public function changedisplayAction()
+	{
+		$page = new Bcms_Page($this->_request->getParam('page'));
+		$page->changeDisplayedStatus();
+		$this->_redirect('admin/pages');
+	}
+	
 	public function changestatusAction()
 	{
 		$page = new Bcms_Page($this->_request->getParam('page'));

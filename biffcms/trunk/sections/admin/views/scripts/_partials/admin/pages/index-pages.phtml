@@ -3,7 +3,9 @@
 	<td align="center"><?php echo (empty($this->parent_name) ? 'None' : $this->parent_name); ?></td>
 	<td align="center"><?php echo $this->module_name; ?></td>
 	<td align="center"><a href="/admin/pages/changestatus/page/<?= $this->id; ?>"><?= ($this->active ? 'Active' : 'Inactive'); ?></a></td>
+	<td align="center"><a href="/admin/pages/changedisplay/page/<?= $this->id; ?>"><?= ($this->display ? 'Yes' : 'No'); ?></a></td>
 	<td align="center"><a href="/admin/pages/settings/page/<?= $this->id; ?>"><img src="/images/admin/settings.png" border="0"></a></td>
 	<td align="center"><a href="/admin/pages/delete/page/<?= $this->id; ?>"><img src="/images/admin/delete.png" border="0"></a></td>
 	<td align="center"><a href="/admin/pages/sethomepage/page/<?= $this->id; ?>"><?= ($this->homepage ? 'Yes' : 'No'); ?></a></td>
 </tr>
+
