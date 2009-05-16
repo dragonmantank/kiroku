@@ -37,11 +37,11 @@ class Admin_SectionsController extends Zend_Controller_Action
 	
 	public function indexAction()
 	{
-		$modulesTable		= new Modules;
-		$installedModules	= $modulesTable->fetchInstalled();
-		$uninstalledModules	= $modulesTable->fetchUninstalled();
+		$table			= new Sections();
+		$installed		= $table->fetchInstalled();
+		$uninstalled	= $table->fetchUninstalled();
 		
-		$this->view->installedModules	= $installedModules;
-		$this->view->uninstalledModules	= $uninstalledModules;
+		$this->view->installedModules	= $installed;
+		$this->view->uninstalledModules	= $uninstalled;
 	}
 }
