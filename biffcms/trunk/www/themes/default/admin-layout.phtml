@@ -3,7 +3,7 @@
 <html>
 <head>
 <?php
-	$this->headTitle()->prepend('BiffCMS');
+	$this->headTitle()->prepend('Kiroku');
 	$this->headTitle()->setSeparator(' :: ');
 	print $this->headTitle();
 ?>
@@ -11,36 +11,35 @@
 	<script type="text/javascript" src="/js/jquery/jquery-1.2.6.min.js"></script>
 	<?= $this->headScript(); ?>
 	
-	<link rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/admin.css">
+	<link rel="stylesheet" href="/themes/default/css/reset-fonts-grids.css" type="text/css">
+	<link rel="stylesheet" href="/themes/default/css/base-min.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/themes/default/css/admin.css">
 	<?= $this->headLink(); ?>
 </head>
 
 <body>
 <div id="doc3" class="yui-t7">
-	<div id="hd">
-		<div style="float: right"><a href="/auth/index/logout" style="font-weight: bold; color: white">Log Out</a></div>
-        <h1></h1>
-    </div>
-    <div id="nav">
+	<div id="hd-nav">
+		<p class="callsign">
+			<a href="/admin">KIROKU</a>
+		</p>
         <ul>
+        	<li><a href="/auth/index/logout">Log Out</a></li>
         	<li><a href="/admin/users">Users</a></li>
         	<li><a href="/admin/system">System Config</a></li>
         	<li><a href="/admin/sections">Sections</a></li>
         	<li><a href="/admin/modules">Plugins</a></li>
             <li><a href="/admin/pages">Pages</a></li>
-            <li><a href="/admin">Admin Home</a></li>
             <li><a href="/">View Site</a></li>
         </ul>
-    </div>
+	</div>
 	<div id="bd">
-        <div class="yui-g">
+        <div class="yui-g" id="content">
 			<!-- YOUR DATA GOES HERE -->
 			<?= $this->layout()->content; ?>
 		</div>
 	</div>
-	<div id="ft"><a href="http://blogs.tankersleywebsolutions.com">BiffCMS - Copyright 2008 Chris Tankersley</a></div>
+	<div id="ft"><a href="http://blogs.tankersleywebsolutions.com">Kiroku - Copyright 2009 Chris Tankersley</a></div>
 </div>
 </body>
 </html>

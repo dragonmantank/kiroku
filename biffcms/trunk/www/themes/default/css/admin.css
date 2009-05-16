@@ -1,0 +1,86 @@
+body {
+	background-image:	url('/themes/default/images/admin/body.png');
+	background-repeat:	repeat-x;
+}
+
+body, #doc3 {
+	margin:	0px;
+}
+
+#bd {
+	padding:	5px;
+}
+
+th {
+	background-color:	#356aa0;
+	color:				white;
+	border:				1px solid white;
+}
+
+td {
+	border:	0px;
+}
+
+tbody td {
+	border:	1px solid #d4d4d4;
+}
+
+tr.evenRow {
+	background-color:	#d1deec;
+}
+
+#hd-nav, #ft {
+	background-image:	url('/themes/default/images/admin/header-nav.png');
+	height:				25px;
+}
+
+#hd-nav p.callsign {
+	padding-left:	5px;
+	float:			left;
+	line-height:	25px;
+}
+
+#hd-nav ul {
+	margin:	0px;
+}
+
+#hd-nav ul li {
+	float:					right;
+	display:				inline;
+	line-height:			25px;
+	padding-left:			7px;
+	padding-right:			5px;
+	background-image:		url('/themes/default/images/admin/header-nav-sep.png');
+	background-repeat:		no-repeat;
+	background-position:	center left;
+}
+
+#hd-nav ul li a, #hd-nav p.callsign a {
+	font-weight:		bold;
+	color:				#555555;
+	text-decoration:	none;
+}
+
+#hd-nav ul li a:hover, #hd-nav p.callsign a {
+	text-decoration:	underline;
+}
+
+#content h1 {
+	color:			white;
+}
+
+#ft {
+	text-align:		right;
+}
+
+#ft a{
+	font-size:	8pt;
+	color:		#A4A4A4;
+	line-height:	25px;
+	padding-right:	5px;
+	text-decoration:	none;
+}
+
+#ft a:hover {
+	text-decoration:	none;
+}
