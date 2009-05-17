@@ -84,3 +84,35 @@ tr.evenRow {
 #ft a:hover {
 	text-decoration:	none;
 }
+
+.admin-infoblock {
+    border:     2px solid #D9EAFB;
+    display:    inline;
+    float:      left;
+    margin:     5px;
+}
+
+.admin-infoblock .header {
+    background-color:   #D9EAFB;
+    border:             1px solid white;
+    padding:            5px;
+    clear:              both;
+}
+
+.admin-infoblock .header .title {
+    font-size:          12pt;
+    text-align:         left;
+    font-weight:        bold;
+}
+
+.admin-infoblock .header .extra {
+    font-size:      10pt;
+    text-align:     right;
+    padding-left:   20px;
+}
+
+.fakeLink {
+	color:				blue;
+	text-decoration:	underline;
+	cursor:				pointer;
+}
