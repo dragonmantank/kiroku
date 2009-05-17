@@ -1,65 +1,47 @@
-html {
-    height: 100%;
-}
-
 body {
-    background-color:   white;
-    height:             100%;
-    background-image:	url('/themes/default/images/header.png');
-    background-repeat:	repeat-x;
+	margin:	0px;
 }
 
-#doc {
-    
+#doc3 {
+	margin:	0px;
 }
 
 #hd {
-    height:             	150px;
-    background-image:		url('/themes/default/images/logo.jpg');
-    background-repeat:		no-repeat;
+    height:            	100px;
+    background-image:	url('/themes/default/images/hd-background.png');
 }
 
-#hd h1 {
-    color:          white;
-    font-weight:    bold;
-    font-size:      24pt;
-    vertical-align: bottom;
-    line-height:    100px;
-    margin-left:    10px;
+#hd img {
+	float:	left;
 }
 
 #nav {
-	height:	50px;
+	float:			right;
+	line-height:	34px;
 }
 
-#bd {
-    background-color:   white;
+#nav ul {
+	margin:			0px;
+	list-style:		none;
 }
 
-#ft {
-    background-color:   white;
-    line-height:        25px;
-    border-top:         1px solid black;
-}
-
-#nav ul li{
-	float:			left;
-	height:			50px;
-	line-height:	50px;
-	margin-right:	20px;
-	margin-left:	20px;
+#nav li {
+	float:			right;
+	background:		url('/themes/default/images/nav-door.gif') no-repeat left top;
+	list-style:		none;
+	margin-left:	-8px;
 }
 
 #nav a {
+	display:			block;
 	color:				white;
 	font-weight:		bold;
+	background:			url('/themes/default/images/nav-right.gif') no-repeat right top;
+	padding-left:		15px;
+	padding-right:		15px;
 	text-decoration:	none;
-	float:				left;
 }
 
 #nav a:hover {
-	background-image:		url('/themes/default/images/nav_hover.gif');
-	background-repeat:		no-repeat;
-	background-position:	center bottom;
-	text-decoration:		underline;
+	text-decoration:	underline;
 }

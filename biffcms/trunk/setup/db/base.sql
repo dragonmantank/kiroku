@@ -10,7 +10,7 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Database: `biffcms`
+-- Database: `Kiroku`
 --
 
 -- --------------------------------------------------------
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `cms_site_info` (
 --
 
 INSERT INTO `cms_site_info` (`id`, `site_name`, `site_tagline`, `admin_name`, `admin_email`, `current_theme`) VALUES
-(1, 'BiffCMS', '', 'root', 'root@mydomain.com', 'layout');
+(1, 'Kiroku', '', 'root', 'root@mydomain.com', 'layout');
 
 -- --------------------------------------------------------
 

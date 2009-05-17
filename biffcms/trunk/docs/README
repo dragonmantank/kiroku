@@ -1,4 +1,4 @@
-BiffCMS, at this point, requires a bit of file editing to get up and running. An automatic installer is in the works as well as even simplifying these installation rules. Total time for installation is only a few minutes.
+Kiroku, at this point, requires a bit of file editing to get up and running. An automatic installer is in the works as well as even simplifying these installation rules. Total time for installation is only a few minutes.
 
 Requirements:
 
@@ -9,7 +9,7 @@ Requirements:
 
 How To Install:
 
-   1. Checkout the source from http://code.google.com/p/biffcms/source/checkout
+   1. Checkout the source from http://code.google.com/p/Kiroku/source/checkout
    2. Edit the following files:
           * app/config/config.ini 
    3. Create a new MySQL database on your host

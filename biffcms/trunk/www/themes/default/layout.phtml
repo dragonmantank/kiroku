@@ -3,35 +3,46 @@
 <html>
 <head>
 <?php
-	$this->headTitle()->prepend('BiffCMS');
+	$this->headTitle()->prepend('Kiroku');
 	$this->headTitle()->setSeparator(' :: ');
 	print $this->headTitle();
 ?>
 
 	<script type="text/javascript" src="/js/jquery/jquery-1.2.6.min.js"></script>
+	<script type="text/javascript" src="/themes/default/js/jquery.reverseorder.packed.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#nav-list').reverseOrder();
+		});
+	</script>
 	<?= $this->headScript(); ?>
 	
-	<link rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" href="/themes/default/css/reset-fonts-grids.css" type="text/css">
+	<link rel="stylesheet" href="/themes/default/css/base-min.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="/themes/default/style.css">
 	<?= $this->headLink(); ?>
 </head>
 
 <body>
-<div id="doc" class="yui-t7">
-	<div id="hd"></div>
-	<div id="nav">
-		<ul>
-			<?php echo $this->mainMenu(); ?>
-		</ul>
+<div id="doc3" class="yui-t7">
+	<div id="hd">
+		<img src="/themes/default/images/logo.png">
+
+		<div id="nav">
+			<ul id="nav-list">
+				<?php echo $this->mainMenu(true); ?>
+			</ul>
+		</div>
+		
 	</div>
+
 	<div id="bd">
         <div class="yui-g">
 			<!-- YOUR DATA GOES HERE -->
 			<?= $this->layout()->content; ?>
 		</div>
 	</div>
-	<div id="ft"><a href="http://blogs.tankersleywebsolutions.com">BiffCMS - Copyright 2008 Chris Tankersley</a></div>
+	<div id="ft"><a href="http://blogs.tankersleywebsolutions.com">Kiroku - Copyright 2008 Chris Tankersley</a></div>
 </div>
 </body>
 </html>
