@@ -58,7 +58,11 @@ class Admin_UsersController extends Zend_Controller_Action
 			unset($data['submit']);
 			
 			if($form->isValid($data)) {
-				$data['password']	= md5($data['password']);
+				if($data['password'] != '') {
+					$data['password']	= md5($data['password']);
+				} else {
+					unset($data['password']);
+				}
 				$users->update($data, 'id = ' . $data['id']);
 				$this->_redirect('/admin/users');
 			} else {
