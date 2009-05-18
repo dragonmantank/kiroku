@@ -2,6 +2,8 @@
 
 class admin_Section extends Kiroku_Section
 {
+	protected $_name	= 'admin';
+	
 	public function install()
 	{
 		return true;

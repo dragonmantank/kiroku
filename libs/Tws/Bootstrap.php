@@ -111,6 +111,11 @@ class Tws_Bootstrap
     {
         $this->_frontController->setControllerDirectory($dirs);
     }
+    
+    public function setDefaultModule($name)
+    {
+    	$this->_frontController->setDefaultModule($name);
+    }
 
     /**
      * Sets parameters on the front controller

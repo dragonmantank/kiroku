@@ -13,6 +13,7 @@ set_include_path(
 	PATH_SEPARATOR . INSTALL_PATH . '/app/models' . 
 	PATH_SEPARATOR . INSTALL_PATH . '/app/forms' .
 	PATH_SEPARATOR . INSTALL_PATH . '/plugins' . 
+	PATH_SEPARATOR . INSTALL_PATH . '/sections' . 
 	PATH_SEPARATOR . get_include_path() );
 	
 include 'Zend/Loader.php';
@@ -40,11 +41,23 @@ $registry->set('systemConfig', $systemConfig);
 // Setup the controller
 $bootstrap->throwExceptions(true);
 $bootstrap->registerPlugin('Zend_Controller_Plugin_ErrorHandler');
-$bootstrap->setControllerDirectory(array(
-	'admin'		=> '../sections/admin/controllers',
-	'auth'		=> '../sections/auth/controllers',
-	'default'	=> '../sections/default/controllers',
-));
+$sections			= new Sections();
+$installedSections	= $sections->fetchInstalled();
+$loadedSections		= array();
+foreach($installedSections as $sec) {
+	$loadedSections[$sec->name]	= '../sections/' . $sec->name . '/controllers';
+	if($sec->default) {
+		$defaultSection	= $sec->name;
+	}
+}
+
+$bootstrap->setControllerDirectory($loadedSections);
+$bootstrap->setDefaultModule($defaultSection);
+//$bootstrap->setControllerDirectory(array(
+//	'admin'		=> '../sections/admin/controllers',
+//	'auth'		=> '../sections/auth/controllers',
+//	'default'	=> '../sections/default/controllers',
+//));
 $bootstrap->setParam('useDefaultControllerAlways', true);
 
 // Add in our custom routes

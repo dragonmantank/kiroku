@@ -12,9 +12,9 @@
  */
 abstract class Kiroku_Section
 {
-	protected $_table	= 'cns_sections';
-	
+	protected $_sectionTable	= 'cms_sections';
 	protected $_db;
+	
 	protected $_name;
 	protected $_description;
 	protected $_version;
@@ -27,8 +27,7 @@ abstract class Kiroku_Section
 	{
 		$this->_db	= Zend_Registry::get('db');
 		
-		$data	= $this->_db->fetchAll($db->select()->where('name = ?', $this->_name));
-		
+		$data	= $this->_db->fetchRow($this->_db->select()->from('cms_sections')->where('name = ?', $this->_name));
 		if( count($data) ) {
 			$this->_id		= $data['id'];
 			$this->_status	= $data['status'];
@@ -52,7 +51,7 @@ abstract class Kiroku_Section
 			'description'	=> $this->_description,
 		);
 		
-		return $this->_db->insert($this->_table, $data);
+		return $this->_db->insert($this->_sectionTable, $data);
 	}
 	
 	/**
@@ -65,7 +64,7 @@ abstract class Kiroku_Section
 	 */
 	public function uninstall()
 	{
-		return $this->_db->delete($this->_table, $this->_db->select()->where('name = ?', $this->_name));
+		return $this->_db->delete($this->_sectionTable, 'name = \'' . $this->_name . "'");
 	}
 	
 	/**
@@ -78,10 +77,14 @@ abstract class Kiroku_Section
 	 */
 	public function deactivate()
 	{
-		$status			= ($this->_status ? 0 : 1);
-		$this->_status	= $status;
+		if( !$this->_default ) {
+			$status			= ($this->_status ? 0 : 1);
+			$this->_status	= $status;
 		
-		return $this->_db->update($this->_table, data('status' => $status), "name = '" . $this->_name . "'");
+			return $this->_db->update($this->_sectionTable, array('status' => $status), "name = '" . $this->_name . "'");
+		} else {
+			throw new Exception('Cannot delete the default section.');
+		}
 	}
 	
 	/**
@@ -95,8 +98,8 @@ abstract class Kiroku_Section
 	public function setAsDefault()
 	{
 		if(!$this->_default) {
-			$this->_db->update($this->_table, data('default' => 1), "name = '" . $this->_name . "'");
-			$this->_db->update($this->_table, data('default' => 0), "name != '" . $this->_name . "'");
+			$this->_db->update($this->_sectionTable, array('default' => 1), "name = '" . $this->_name . "'");
+			$this->_db->update($this->_sectionTable, array('default' => 0), "name != '" . $this->_name . "'");
 			$this->_default	= 1;
 		}
 		
