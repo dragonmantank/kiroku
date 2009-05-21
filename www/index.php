@@ -59,6 +59,7 @@ $bootstrap->setDefaultModule($defaultSection);
 //	'default'	=> '../sections/default/controllers',
 //));
 $bootstrap->setParam('useDefaultControllerAlways', true);
+$bootstrap->setParam('prefixDefaultModule', true);
 
 // Add in our custom routes
 $route	= new Zend_Controller_Router_Route('page/:page', array('module'=>'default', 'controller'=>'index', 'action'=>'index'));
