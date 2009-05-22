@@ -22,7 +22,8 @@ class Bcms_View_Helper_MainMenu
 	protected function _addChildren($pageId)
 	{
 		$db		= Zend_Registry::get('db');
-		$result	= $db->fetchAll('SELECT `id`, `name`, `link_name`, `slug` FROM `cms_pages` WHERE `active`=1 AND `display` = 1 AND `parent_page` = ' . $pageId . ' ORDER BY `link_name` ASC');
+		$select	= $db->select()->from('cms_pages', array('id', 'name', 'link_name', 'slug'))->where('active = 1')->where('display = 1')->where('parent_page = ?', $pageId)->order('link_name ASC');
+		$result	= $db->fetchAll($select);
 		
 		if(count($result)) {
 			$html	= '<ul>';
@@ -50,7 +51,8 @@ class Bcms_View_Helper_MainMenu
 	{
 		$order	= ($reverse ? 'DESC' : 'ASC');
 		$db		= Zend_Registry::get('db');
-		$result	= $db->fetchAll('SELECT `id`, `name`, `link_name`, `slug` FROM `cms_pages` WHERE `active`=1 AND `display` = 1 AND `parent_page` = 0 ORDER BY `homepage` DESC, `link_name` ' . $order);
+		$select	= $db->select()->from('cms_pages', array('id', 'name', 'link_name', 'slug'))->where('active = 1')->where('display = 1')->where('parent_page = 0')->order('homepage DESC')->order('link_name ' . $order);
+		$result	= $db->fetchAll($select);
 		$html	= '';
 		
 		$classes		= array('first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth');

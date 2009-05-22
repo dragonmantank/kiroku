@@ -12,7 +12,8 @@ class Bcms_Auth_Adapter_SMF extends Bcms_Auth_Adapter
 	static public function getGroupId($name)
 	{
 		$db			= Zend_Registry::get('db');
-		list($name)	= $db->fetchCol('SELECT `ID_GROUP` FROM `smf_live_membergroups` WHERE `groupName` = ?', $name);
+		$select		= $db->select()->from('smf_live_membergroups', array('ID_GROUP'))->where('groupName = ?', $name);
+		list($name)	= $db->fetchCol($select);
 		
 		return $name;
 	}
@@ -20,7 +21,8 @@ class Bcms_Auth_Adapter_SMF extends Bcms_Auth_Adapter
 	static public function getGroupName($id)
 	{
 		$db			= Zend_Registry::get('db');
-		list($name)	= $db->fetchCol('SELECT `groupName` FROM `smf_live_membergroups` WHERE `ID_GROUP` = ?', $id);
+		$select		= $db->select()->from('smf_live_membergroups', array('groupName'))->where('ID_GROUP = ?', $id);
+		list($name)	= $db->fetchCol($select);
 		
 		return $name;
 	}

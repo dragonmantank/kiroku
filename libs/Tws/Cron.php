@@ -154,7 +154,8 @@ abstract class Tws_Cron
 	 */
 	protected function _alreadyInstalled()
 	{
-		$results	= $this->_db->fetchAll('SELECT `id` FROM `Cron_Jobs` WHERE `name` = ?', $this->_name);
+		$select		= $this->_db->select()->from('Cron_Jobs', array('id'))->where('name = ?', $this->_name);
+		$results	= $this->_db->fetchAll($select);
 		
 		if(count($results)) {
 			throw new Exception('Cron job ' . $this->_name . 'is already installed');
@@ -178,7 +179,8 @@ abstract class Tws_Cron
 	 */
 	protected function _getId()
 	{
-		list($id)	= $this->_db->fetchCol('SELECT `id` FROM `Cron_Jobs` WHERE `name` = ?', $this->_name);
+		$select		= $this->_db->select()->from('Cron_Jobs', array('id'))->where('name = ?', $this->_name);
+		list($id)	= $this->_db->fetchCol($select);
 		
 		return $id;
 	}
@@ -190,7 +192,8 @@ abstract class Tws_Cron
 	 */
 	public function getStatus()
 	{
-		$status	= $this->_db->fetchRow('SELECT `active` FROM `Cron_Jobs` WHERE `id` = ?', $this->_getId());
+		$select	= $this->_db->select()->from('Cron_Jobs', array('active'))->where('id = ?', $this->_getId());
+		$status	= $this->_db->fetchRow($select);
 		
 		return $status['active'];
 	}

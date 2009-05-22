@@ -20,7 +20,8 @@ class Tws_CronController
 	static public function run()
 	{
 		$db		= Zend_Registry::get('db');
-		$jobs	= $db->fetchAll('SELECT `shortName` FROM `Cron_Jobs` WHERE `active` = 1');
+		$select	= $db->select()->from('Cron_Jobs', array('shortName'))->where('active = 1');
+		$jobs	= $db->fetchAll($select);
 
 		foreach($jobs as $job) {
 			$className	= 'Tws_Cron_' . $job['shortName'];
