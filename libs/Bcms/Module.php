@@ -30,7 +30,8 @@ abstract class Bcms_Module
 	static public function factory($id, $pageId = null)
 	{
 		$db			= Zend_Registry::get('db');
-		list($name)	= $db->fetchCol('SELECT `name` FROM `cms_modules` WHERE `id` = ?', $id);
+		$select		= $db->select()->from('cms_modules', array('name'))->where('id = ?', $id);
+		list($name)	= $db->fetchCol($select);
 		$className	= ucfirst($name) . '_Plugin';
 		
 		return new $className($pageId);

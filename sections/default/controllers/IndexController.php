@@ -16,7 +16,8 @@ class Default_IndexController extends Zend_Controller_Action
 		try {
 			$page	= new Bcms_Page($seed);
 		} catch (Exception $e) {
-			$this->_redirect('notfound');
+			echo $e->getMessage(); die();
+//			$this->_redirect('notfound');
 		}
 		
 		$this->view->title		= $page->title;

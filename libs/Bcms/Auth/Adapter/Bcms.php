@@ -13,7 +13,8 @@ class Bcms_Auth_Adapter_Bcms extends Bcms_Auth_Adapter
 	static public function getGroupId($name)
 	{
 		$db			= Zend_Registry::get('db');
-		list($name)	= $db->fetchCol('SELECT `id` FROM `cms_user_groups` WHERE `name` = ?', $name);
+		$select		= $db->select()->from('cms_user_groups')->where('name = ?', $name);
+		list($name)	= $db->fetchCol($select);
 		
 		return $name;
 	}

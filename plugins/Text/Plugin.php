@@ -15,7 +15,8 @@ class Text_Plugin extends Bcms_Module
 	{
 		if($pageId != null) {
 			$this->_db	= Zend_Registry::get('db');
-			$row		= $this->_db->fetchRow('SELECT * FROM `' . $this->_table . '` WHERE `page_id` = ?', $pageId);
+			$select		= $this->_db->select()->from($this->_table)->where('page_id = ?', $pageId);
+			$row		= $this->_db->fetchRow($select);
 			
 			if($row != null) {
 				$this->_id			= $row['id'];

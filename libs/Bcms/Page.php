@@ -62,7 +62,8 @@ class Bcms_Page
 	static public function findHomepage()
 	{
 		$db				= Zend_Registry::get('db');
-		list($pageId)	= $db->fetchCol('SELECT `id` FROM `cms_pages` WHERE `homepage` = 1');
+		$select			= $db->select()->from('cms_pages')->where('homepage = ?', 1);
+		list($pageId)	= $db->fetchCol($select);
 		
 		return $pageId;
 	}
@@ -70,7 +71,8 @@ class Bcms_Page
 	public function load($seed)
 	{
 		$column	= ( is_numeric($seed) ? 'id' : 'slug');
-		$page	= $this->_db->fetchRow('SELECT * FROM `cms_pages` WHERE `' . $column . '` = ?', $seed);
+		$select	= $this->_db->select()->from('cms_pages')->where($column . ' = ?', $seed);
+		$page	= $this->_db->fetchRow($select);
 		
 		if( $page != null ) {
 			$this->_id			= $page['id'];
