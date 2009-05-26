@@ -45,7 +45,8 @@ class Text_Plugin extends Bcms_Module
 	
 	protected function _save()
 	{
-		$this->_db->update($this->_table, array('text'=>$this->_text), 'page_id = ' . $this->_pageId);
+		$data	= array('text' => $this->_text);
+		$this->_db->update($this->_table, $data, 'page_id = ' . $this->_pageId);
 	}
 	
 	public function updateText($data)

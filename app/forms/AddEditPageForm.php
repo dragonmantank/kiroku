@@ -24,12 +24,14 @@ class AddEditPageForm extends Zend_Form
 		$pageDescription->setLabel('Page Description:')
 						->setAttribs(array('cols'=>50, 'rows'=>10));
 		
-		$pages	= $db->fetchPairs('SELECT `id`,`name` FROM `cms_pages` ORDER BY `name` ASC');
+		$select	= $db->select()->from('cms_pages', array('id', 'name'))->order('name ASC');
+		$pages	= $db->fetchPairs($select);
 		$pages	= Tws_Functions::array_merge(array('0'=>'None'), $pages);
 		$parent_page->setLabel('Parent:')
 					->setMultiOptions($pages);
-					
-		$modules	= $db->fetchPairs('SELECT `id`,`name` FROM `cms_modules` WHERE `active` = 1 ORDER BY `name` ASC');
+		
+		$select		= $db->select()->from('cms_modules', array('id', 'name'))->where('active = ?', 1)->order('name ASC');
+		$modules	= $db->fetchPairs($select);
 		$module->setLabel('Module:')
 			   ->setMultiOptions($modules);
 			   
