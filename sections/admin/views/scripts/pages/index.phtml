@@ -2,33 +2,32 @@
 	$this->headTitle('Pages');
 ?>
 
-<h1>Available Pages</h1>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.stripped tr:even').addClass('evenRow');
 	});
+	
+	function addPage() {
+		$('#editContent').load('/admin/pages/add-ajax/');
+	}
+
+	function loadPage(id) {
+		$('#editContent').load('/admin/pages/edit-ajax/page/' + id);
+	}
 </script>
 
-<table width="100%" cellspacing="0" class="stripped">
-	<thead>
-		<tr>
-			<th>Page</th>
-			<th>Parent</th>
-			<th>Module</th>
-			<th>Status</th>
-			<th>Displayed</th>
-			<th>Settings</th>
-			<th>Delete</th>
-			<th>Homepage</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?= $this->partialLoop('_partials/admin/pages/index-pages.phtml', $this->pages); ?>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="8" align="right"><a href="/admin/pages/add">Add New Page</a></td>
-		</tr>
-	</tfoot>
-</table>
+<h1>Available Pages</h1>
+<div id="admin-page-container" style="display: table; table-layout: fixed">
+	<div id="pageNav" style="display: table-cell; min-width: 160px; vertical-align: top">
+		<ul>
+			<?php echo $this->pagesAdminMenu(); ?>
+			<?php // foreach($this->pages as $page): ?>
+				<!-- <li><a class="<?php echo (!$page['display'] ? 'hiddenPage' : ''); ?> <?php echo (!$page['active'] ? 'inactivePage' : ''); ?>" onClick="loadPage(<?php echo $page['id']; ?>); return false;" href="/admin/pages/edit/page/<?php echo $page['id']; ?>"><?php echo $page['name']; ?></a></li> -->
+			<?php // endforeach; ?>
+			<li class="addPage"><a class="hiddenPage" href="/admin/pages/add" onClick="addPage(); return false;">Add New Page</a></li>
+		</ul>
+	</div>	
+
+	<div id="editContent" style="display: table-cell; width: 100%">
+	</div>
+</div>

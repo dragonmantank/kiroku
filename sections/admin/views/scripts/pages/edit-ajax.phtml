@@ -1,0 +1,42 @@
+<?php
+$this->headScript()->appendFile('/js/fckeditor/fckeditor.js');
+
+$this->headScript()->captureStart();
+?>
+
+<?php
+$this->headScript()->captureEnd();
+?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#tabs').tabs();
+	});
+</script>
+
+<div id="tabs">
+	<ul>
+		<li><a href="#edit-mode">Edit Content</a></li>
+		<li><a href="#settings-mode">Page Settings</a></li>
+		<li><a href="#delete-mode">Delete Page</a></li>
+	</ul>
+	
+	<div id="edit-mode">
+		<?= $this->editMode; ?>
+	</div>
+	
+	<div id="settings-mode">
+		<?php echo $this->form; ?>
+	</div>
+	
+	<div id="delete-mode">
+		Deleting a page will completely remove it from Kiroku and it will not be recoverable. If you just want to stop the page from being accessed, click on 'Page Settings' and set the status to 'Inactive'.
+		
+		<p>
+		If you are sure that you want to completely remove this page, click the button below.
+		
+		<form method="post" action="/admin/pages/delete/page/<?php echo $this->pageId; ?>">
+			<input type="submit" value="Delete Page">
+		</form>
+	</div>
+</div>

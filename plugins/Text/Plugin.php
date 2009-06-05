@@ -33,7 +33,8 @@ class Text_Plugin extends Bcms_Module
 		$view = $this->_getView();
 		
 		$view->existingText	= stripslashes($this->_text);
-		
+		$view->id			= $this->_pageId;
+				
 		return $view->render('edit.phtml');
 	}
 	

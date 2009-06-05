@@ -21,6 +21,11 @@ td {
 	border:	0px;
 }
 
+ul {
+	margin-top:		5px;
+	margin-bottom:	5px;
+}
+
 tbody td {
 	border:	1px solid #d4d4d4;
 }
@@ -115,4 +120,45 @@ tr.evenRow {
 	color:				blue;
 	text-decoration:	underline;
 	cursor:				pointer;
+}
+
+#pageNav ul {
+	margin-top:	0px;
+	margin-bottom:	0px;
+}
+
+#pageNav ul li {
+	list-style-image:	url('admin-images/page_green.png');
+	line-height:		30px;
+}
+
+#pageNav ul li a {
+	color:				blue;
+	text-decoration:	none;
+	font-weight:		bold;
+}
+
+#pageNav ul li a:hover {
+	text-decoration:	underline;
+}
+
+#pageNav ul li a.inactivePage {
+	color:			red;
+	font-weight:	normal;
+}
+
+#pageNav ul li a.hiddenPage {
+	font-weight:	normal;
+}
+
+#pageNav ul li.addPage {
+	list-style-image:	url('admin-images/page_add.png');
+}
+
+#editContent h1 {
+	color:	black;
+}
+
+ul.ui-tabs-nav li {
+	list-style:	none;
 }
