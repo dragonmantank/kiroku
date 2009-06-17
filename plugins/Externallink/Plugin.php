@@ -17,7 +17,7 @@ class Externallink_Plugin extends Bcms_Module
 	{
 		if($pageId != null) {
 			$this->_db	= Zend_Registry::get('db');
-			$select		= $this->_db->select()->from($this->_table)->where('pageId = ?', $pageId');
+			$select		= $this->_db->select()->from($this->_table)->where('pageId = ?', $pageId);
 			$row		= $this->_db->fetchRow($select);
 			
 			if($row != null) {
