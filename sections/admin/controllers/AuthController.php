@@ -1,8 +1,20 @@
 <?php
 
-class Admin_UsersController extends Zend_Controller_Action
+/**
+ * Administrative functions that relate to authentication like users and groups
+ *
+ * @author Chris Tankersley <chris@tankersleywebsolutions.com>
+ * @copyright 2009 Chris Tankersley
+ * @package Admin
+ */
+class Admin_AuthController extends Zend_Controller_Action
 {
-	public function addAction()
+	/**
+	 * Allows a user to add new users to the system
+	 *
+	 * @author Chris Tankersley <chris@tankersleywebsolutions.com>
+	 */
+	public function addUserAction()
 	{
 		$users	= new Users;
 		$form	= $users->getForm();
@@ -23,29 +35,29 @@ class Admin_UsersController extends Zend_Controller_Action
 		$this->view->form	= $form;
 	}
 	
-	public function init()
-	{
-		$auth	= Zend_Auth::getInstance();
-		if(!$auth->hasIdentity()) {
-			$this->_redirect('auth');
-		} else {
-			if($auth->getIdentity()->user_group != Bcms_Auth_Adapter_Bcms::getGroupId('Super Users')) {
-			$this->_redirect('auth');
-			}
-		}
-
-        $this->_helper->layout->setLayout('admin-layout');
-	}
-	
+	/**
+	 * Displays the newest users and groups that have been added
+	 *
+	 * @author Chris Tankersley <chris@tankersleywebsolutions.com>
+	 */
 	public function indexAction()
 	{
 		$table	= new Users;
-		$users	= $table->fetchAll($table->select()->limit(5)->order('username DESC'));
+		$users	= $table->fetchAll($table->select()->limit(5)->order('id DESC'));
+		
+		$groupsTable	= new UserGroups();
+		$groups			= $groupsTable->fetchAll($groupsTable->select()->limit(5)->order('id DESC'));
 		
 		$this->view->users	= $users->toArray(); 
+		$this->view->groups	= $groups->toArray();
 	}
-	
-	public function viewAction()
+
+	/**
+	 * Allows a user to view a specific user and update them
+	 *
+	 * @author Chris Tankersley <chris@tankersleywebsolutions.com>
+	 */
+	public function viewUserAction()
 	{
 		$users		= new Users;
 		$user		= $users->find($this->_request->getParam('uid'))->current();

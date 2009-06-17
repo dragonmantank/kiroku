@@ -1,0 +1,26 @@
+<?php $this->headTitle('Authentication Administration'); ?>
+<h1>Authentication Administration</h1>
+
+<div class='admin-infoblock'>
+    <div class='header'>
+        <span class="title">Recently Added Users</span>
+        <span class="extra"><a href="/admin/auth/add-user">New User</a> | <a href="/admin/auth/view-users">View All Users</a></span>
+    </div>
+    <div class='content'>
+    	<ul>
+	        <?php echo $this->partialLoop('auth/_partials/index/infoblock-users.phtml', $this->users); ?>
+	    </ul>
+    </div>
+</div>
+
+<div class='admin-infoblock'>
+    <div class='header'>
+        <span class="title">Recently Added Groups</span>
+        <span class="extra"><a href="/admin/auth/add-group">New Group</a> | <a href="/admin/auth/view-groups">View All Groups</a></span>
+    </div>
+    <div class='content'>
+    	<ul>
+	        <?php echo $this->partialLoop('auth/_partials/index/infoblock-groups.phtml', $this->groups); ?>
+	    </ul>
+    </div>
+</div>

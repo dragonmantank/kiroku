@@ -53,11 +53,6 @@ foreach($installedSections as $sec) {
 
 $bootstrap->setControllerDirectory($loadedSections);
 $bootstrap->setDefaultModule($defaultSection);
-//$bootstrap->setControllerDirectory(array(
-//	'admin'		=> '../sections/admin/controllers',
-//	'auth'		=> '../sections/auth/controllers',
-//	'default'	=> '../sections/default/controllers',
-//));
 $bootstrap->setParam('useDefaultControllerAlways', true);
 $bootstrap->setParam('prefixDefaultModule', true);
 
@@ -72,6 +67,10 @@ Zend_Layout::startMvc( array('layoutPath'	=> dirname(__FILE__) . '/themes/' . $s
 $viewRenderer	= Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
 $viewRenderer->initView();
 $viewRenderer->view->addHelperPath('Bcms/View/Helper', 'Bcms_View_Helper');
+
+// Add in our Front Controllers
+$bootstrap->registerPlugin('Tws_Controller_Plugin_Auth');
+$bootstrap->registerPlugin('Tws_Controller_Plugin_AdminLayout');
 
 // Run!
 $bootstrap->dispatch();
