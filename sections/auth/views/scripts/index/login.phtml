@@ -4,20 +4,30 @@
 
 <h1>Please log in</h1>
 
-<font color="red"><b><?= $this->errorMessage; ?></b></font>
+<p style="text-align: center">
+    <font color="red"><b><?= $this->errorMessage; ?></b></font>
+</p>
 
-<form method="post">
-	<table>
-		<tr>
-			<td>Username:</td>
-			<td><input type="text" name="username"></td>
-		</tr>
-		<tr>
-			<td>Password:</td>
-			<td><input type="password" name="passwd"></td>
-		</tr>
-		<tr>
-			<td colspan="2" align="right"><input type="submit" name="login"></td>
-		</tr>
-	</table>
-</form>
+<div style="width: 400px; margin-left: auto; margin-right: auto">
+    <div style="text-align: center; float: left;">
+        <img src="/images/Crypto_stub.gif" />
+    </div>
+
+    <div>
+        <form method="post">
+        	<table>
+        		<tr>
+        			<td>Username:</td>
+        			<td><input type="text" name="username"></td>
+        		</tr>
+        		<tr>
+        			<td>Password:</td>
+        			<td><input type="password" name="passwd"></td>
+        		</tr>
+        		<tr>
+        			<td colspan="2" align="right"><input type="submit" name="login" value="Log In"></td>
+           		</tr>
+        	</table>
+        </form>
+    </div>
+</div>
