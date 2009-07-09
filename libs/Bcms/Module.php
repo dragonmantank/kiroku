@@ -1,59 +1,20 @@
 <?php
 
-abstract class Bcms_Module
+/**
+ * Original module class used under BiffCMS
+ * 
+ * This class has since been deprecated in favor of using Kiroku_Plugin. Since
+ * they are the same thing and not all code has been refactored, it now just
+ * extends Kiroku_Plugin until such time as all the original code has been
+ * ported.
+ * 
+ * @author Chris Tankersley <chris@tankersleywebsolutions.com>
+ * @copyright 2009 Chris Tankersley
+ * @deprecated
+ * @see Kiroku_Plugin
+ */
+
+abstract class Bcms_Module extends Kiroku_Plugin
 {
-	protected $_db;
 	
-	// Module attributes
-	protected $_id;
-	protected $_name;
-	protected $_description;
-	protected $_active;
-	
-	abstract public function edit();
-	abstract public function insertDefaultPage($pageId);
-	abstract protected function _save();
-	abstract public function updateText($data);
-	abstract public function render();
-	
-	static public function createDefaultPage($moduleId, $pageId)
-	{
-		$module = self::factory($moduleId);
-		$module->insertDefaultPage($pageId);
-	}
-	
-	public function delete()
-	{
-		$this->_db->delete($this->_table, 'id = ' . $this->_id);
-	}
-	
-	static public function factory($id, $pageId = null)
-	{
-		$db			= Zend_Registry::get('db');
-		$select		= $db->select()->from('cms_modules', array('name'))->where('id = ?', $id);
-		list($name)	= $db->fetchCol($select);
-		$className	= ucfirst($name) . '_Plugin';
-		
-		return new $className($pageId);
-	}
-	
-	protected function _getView()
-	{
-		$view   = new Zend_View();
-		$view->addBasePath(dirname(dirname(dirname(__FILE__))) . '/plugins/' . ucfirst($this->_name) . '/views/');
-	    
-	    return $view;             
-	}
-	
-	public function install()
-	{
-		$modules	= new Modules();
-		$modules->insert(array('name' => strtolower($this->_name), 'description' => $this->_description));
-	}
-	
-	public function uninstall()
-	{
-		$modules	= new Modules();
-		$modules->delete("`name` = '" . strtolower($this->_name) . "'");
-	}
 }
