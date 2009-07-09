@@ -50,10 +50,18 @@ class Admin_ModulesController extends Zend_Controller_Action
 		$this->_helper->layout->disableLayout();
 		$this->_helper->viewRenderer->setNoRender(true);
 		
-		$moduleName	= ucfirst($this->_request->getParam('name')) . '_Plugin';
-		$module 	= new $moduleName;
-		
-		echo json_encode(array('status' =>$module->install()));
+		$status		= 0;
+		$message	= 'Unkown error';
+		try {
+			$moduleName	= ucfirst($this->_request->getParam('name')) . '_Plugin';
+			$module 	= new $moduleName;
+			$module->install();
+			$status		= 1;
+			$message	= 'Plugin installed successfully';
+		} catch (Exception $e) {
+			$message	= $e->getMessage();
+		}
+		echo json_encode(array('status' =>$status, 'message' => $message));
 	}
 	
 	public function uninstallAction()

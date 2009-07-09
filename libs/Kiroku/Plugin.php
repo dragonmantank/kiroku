@@ -18,8 +18,8 @@ abstract class Kiroku_Plugin
 
 	// Module attributes
 	protected $_id;
-	protected $_name;
-	protected $_description;
+	protected $_name			= null;
+	protected $_description		= null;
 	protected $_active;
 
 	abstract public function edit();
@@ -49,6 +49,14 @@ abstract class Kiroku_Plugin
 		return new $className($pageId);
 	}
 
+	/**
+	 * Returns a Zend_View object for rendering HTML output
+	 *
+	 * Generates and returns a Zend_View object that is pointing to the correct
+	 * script directory for the plugin.
+	 * 
+	 * @return Zend_View
+	 */
 	protected function _getView()
 	{
 		$view   = new Zend_View();
@@ -59,8 +67,12 @@ abstract class Kiroku_Plugin
 
 	public function install()
 	{
-		$modules	= new Modules();
-		$modules->insert(array('name' => strtolower($this->_name), 'description' => $this->_description));
+		if($this->_name == null || $this->_description == null) {
+			throw new Exception('Plugin is missing name or description. Please check source for this plugin.');
+		} else {
+			$modules	= new Modules();
+			$modules->insert(array('name' => strtolower($this->_name), 'description' => $this->_description));
+		}
 	}
 
 	public function uninstall()

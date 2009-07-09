@@ -32,7 +32,7 @@
 					alert('Plugin ' + name + ' has been installed.');
 					window.location = '/admin/modules';
 				} else {
-					alert('There was a problem installing ' + name);
+					alert('There was a problem installing ' + name + ': ' + rsp.message);
 				}
 			},
 			type: 'GET',
